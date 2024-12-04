@@ -11,6 +11,7 @@ import AllMovies from "./Pages/AllMovies/AllMovies"
 import MyFavorites from "./Pages/MyFavorites/MyFavorites"
 import FAQ from "./Pages/FAQ/FAQ"
 import ForgetPassword from "./Pages/Registration/ForgetPassword"
+import PrivateRoute from "./Pages/Private/PrivateRoute"
 
 const Routes = createBrowserRouter([
     {
@@ -26,10 +27,13 @@ const Routes = createBrowserRouter([
             {
                 path:"allMovies",
                 element:<AllMovies/>
+                
             },
             {
                 path:"myFavorites",
-                element:<MyFavorites/>
+                element:<PrivateRoute>
+                    <MyFavorites/>
+                </PrivateRoute>
             },
             {
                 path:"FAQ",
@@ -38,12 +42,16 @@ const Routes = createBrowserRouter([
             {
                 path:"production/:ID?",
                 loader:({params})=>fetch(`http://localhost:5000/movies/${params.ID||"b51715dbd2ff48f4a4c64025"}`),
-                element:<AddOrEdit/>
+                element:<PrivateRoute>
+                    <AddOrEdit/>
+                </PrivateRoute>
             },
             {
                 path:"details/:ID?",
                 loader:({params})=>fetch(`http://localhost:5000/movies/${params.ID || "b51715dbd2ff48f4a4c64025"}`),
-                element:<Details/>
+                element:<PrivateRoute>
+                    <Details/>
+                </PrivateRoute>
             },
             {
                 path:"registration",

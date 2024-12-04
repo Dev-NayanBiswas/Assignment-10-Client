@@ -48,6 +48,7 @@ function Navbar(){
               <img src={userData?.photoURL? userData.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'} />
             </div>
             <section
+              onMouseLeave={()=>setShowDropdown(false)}
                 className={`absolute right-0 mt-10 w-48 rounded-md shadow-lg transition-transform transform px-2 ${
                     showDropdown
                         ? "opacity-100 scale-100"

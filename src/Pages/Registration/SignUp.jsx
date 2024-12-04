@@ -3,29 +3,30 @@ import SignUpSVG from "../../Components/SVGComponents/SignUpSVG"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function SignUp(){
+  const location = useLocation();
+  const redirect = useNavigate();
   const [showPass, setShowPass] = useState(true);
   const {registrationWithEmail,updateUserProfile} = useAuth()
   const {register, handleSubmit, formState:{errors}, reset} = useForm()
 
   function handleSignUp(data){
-    console.log(data.email, data.password);
     registrationWithEmail(data.email, data.password)
     .then(()=>{
       updateUserProfile(data.name, data.photo)
       .then(()=>{
         toastAlert("success","Successfully Signed Up");
         reset();
+        redirect(`${location.state? location.state : "/"}`)
       })
       .catch((error)=>toastAlert("error","Error happens to upload userdata"))
       })
     .catch(error=>toastAlert("error","Error Occurred"))
-    // reset();
   }
 
   return (

@@ -2,6 +2,7 @@ import Banner from "../../Components/Banner/Banner.jsx";
 import FeatureCard from "../../Components/FeatureCard.jsx";
 import HelpSection from "../../Components/HelpSection.jsx";
 import MoviePackages from "../../Components/MoviePackages.jsx";
+import PrivateRoute from "../Private/PrivateRoute.jsx";
 
 function Home(){
    

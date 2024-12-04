@@ -1,14 +1,22 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AllProviders/AuthProvider"
 import { FaGoogle } from "react-icons/fa";
 
 
-function GoogleLogin() {
-    const {googleLogin, userData} = useAuth()
+function GoogleLogin(){
+    const location = useLocation();
+    const redirect = useNavigate();
+    const {googleLogin} = useAuth()
 
-    console.log(userData)
+    function handleGoogleSignIn(){
+      googleLogin()
+      .then(()=>{
+        redirect(`${location.state? location.state : "/"}`)
+      })
+    }
   return (
     <>
-        <span onClick={googleLogin} className="active flex items-center gap-4 cursor-pointer"><FaGoogle /> Google Signin</span>
+        <span onClick={handleGoogleSignIn} className="active flex items-center gap-4 cursor-pointer"><FaGoogle /> Google Signin</span>
     </>
   )
 }

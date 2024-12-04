@@ -48,7 +48,6 @@ function AddOrEdit() {
   function formHandler(data){
     console.log(data.rating)
     if(!data.rating || data.rating === 0){
-        alert("Rate this Movie")
         setError(
             "rating",{
                 type:"manual",

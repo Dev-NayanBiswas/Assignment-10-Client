@@ -3,11 +3,14 @@ import SignInSVG from "../../Components/SVGComponents/SignInSVG"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
+import GoogleLogin from "./GoogleLogin";
 
 function SignIn(){
+  const location = useLocation()
+  const redirect = useNavigate()
   const {signingWithEmail} = useAuth()
   const [showPass, setShowPass] = useState(true);
   const {register, handleSubmit, formState:{errors}, reset, watch} = useForm()
@@ -16,9 +19,12 @@ function SignIn(){
 
   function handleSignIn(data){
     signingWithEmail(data.email, data.password)
-    .then(()=>toastAlert("success","Successfully Signed In"))
+    .then(()=>{
+      toastAlert("success","Successfully Signed In");
+      redirect(`${location.state? location.state : "/"}`);
+      reset();
+    })
     .catch(error=>toastAlert("error",`${error.message}`))
-    // reset();
   }
 
   return(
@@ -80,8 +86,9 @@ function SignIn(){
           <section>
             <p className="text-lg font-semibold text-sky-500">new on ReelEra? <Link to="/registration/signUp" className="text-defaultColor text-xl font-semibold">Sign Up</Link> first</p>
           </section>
-          <section>
+          <section className="flex gap-4 justify-start items-center">
             <button type="submit" className="inActive">Sign In</button>
+            <GoogleLogin/>
           </section>
           </form>
         </section>
