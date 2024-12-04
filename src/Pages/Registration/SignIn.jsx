@@ -4,16 +4,21 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../AllProviders/AuthProvider";
+import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function SignIn(){
+  const {signingWithEmail} = useAuth()
   const [showPass, setShowPass] = useState(true);
   const {register, handleSubmit, formState:{errors}, reset, watch} = useForm()
 
   const emailData = watch("email");
 
   function handleSignIn(data){
-    console.log(data);
-    reset();
+    signingWithEmail(data.email, data.password)
+    .then(()=>toastAlert("success","Successfully Signed In"))
+    .catch(error=>toastAlert("error",`${error.message}`))
+    // reset();
   }
 
   return(

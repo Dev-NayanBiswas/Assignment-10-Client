@@ -4,14 +4,28 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import GoogleLogin from "./GoogleLogin";
+import { useAuth } from "../../AllProviders/AuthProvider";
+import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function SignUp(){
-  const [showPass, setShowPass] = useState(false);
+  const [showPass, setShowPass] = useState(true);
+  const {registrationWithEmail,updateUserProfile} = useAuth()
   const {register, handleSubmit, formState:{errors}, reset} = useForm()
 
   function handleSignUp(data){
-    console.log(data);
-    reset();
+    console.log(data.email, data.password);
+    registrationWithEmail(data.email, data.password)
+    .then(()=>{
+      updateUserProfile(data.name, data.photo)
+      .then(()=>{
+        toastAlert("success","Successfully Signed Up");
+        reset();
+      })
+      .catch((error)=>toastAlert("error","Error happens to upload userdata"))
+      })
+    .catch(error=>toastAlert("error","Error Occurred"))
+    // reset();
   }
 
   return (
@@ -125,8 +139,9 @@ function SignUp(){
           <section>
             <p className="text-lg font-semibold text-sky-500">Already have an account? <Link to="/registration/signIn" className="text-defaultColor text-xl font-semibold">Sign In</Link> now</p>
           </section>
-          <section>
+          <section className="flex gap-3 justify-start">
             <button type="submit" className="inActive">Sign Up</button>
+            <GoogleLogin/>
           </section>
           </form>
         </section>

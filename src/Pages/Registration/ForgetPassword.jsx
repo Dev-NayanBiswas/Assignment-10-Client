@@ -1,16 +1,24 @@
 import { useParams } from "react-router-dom";
 import ResetSVG from "../../Components/SVGComponents/ResetSVG"
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../AllProviders/AuthProvider";
+import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function ForgetPassword(){
+    const {resetPasswordEmail} = useAuth();
     const {email} = useParams();
     console.log(email)
   const {register, handleSubmit, formState:{errors}, reset} = useForm({defaultValues:{email:email || " "}});
 
 
   function handleReset(data){
-    console.log(data);
-    reset();
+    resetPasswordEmail(data.email)
+    .then(()=>{
+      toastAlert("success",`Email send to ${data.email}`)
+      window.open("https://mail.google.com/mail", "_blank")
+      reset();
+    })
+    .catch(error=>toastAlert("error","Error happened in sending Email"))
   }
   return (
     <>

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import auth from "../../FirebaseConfig";
+import { useContext, useEffect, useState } from "react";
+import auth from "../../FirebaseConfig.js";
 import { AuthContext } from "../Utilities/Scripts/AllContexts"
 import toastAlert from "../Utilities/Scripts/toastAlert";
 import {
@@ -89,6 +89,10 @@ function AuthProvider({children}){
         {children}
     </AuthContext.Provider>
   )
+}
+
+export function useAuth(){
+  return useContext(AuthContext)
 }
 
 export default AuthProvider

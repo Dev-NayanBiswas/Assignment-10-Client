@@ -3,10 +3,13 @@ import { NavLink } from "react-router-dom";
 import LogoSVG from "../SVGComponents/LogoSVG";
 import ThemeToggler from "../ThemeToggler";
 import { useState } from "react";
+import { useAuth } from "../../AllProviders/AuthProvider";
 
 function Navbar(){
   const [showDropdown, setShowDropdown] = useState(false);
-  const userData = false;
+  const {userData,signOutUser} = useAuth()
+  console.log(userData)
+  
     const paths = [
         {path:"/", name:"Home"},
         {path:"/production", name:"Add Movies"},
@@ -39,10 +42,10 @@ function Navbar(){
         <nav className='navbar-end flex-1'>
             {/* Avatar */}
           {
-            userData?
+            userData?.email? 
             <div onMouseEnter={()=>setShowDropdown(true)} className='avatar relative cursor-pointer'>
             <div className='ring-defaultColor ring-offset-black h-10 aspect-square rounded-full ring-[2px] ring-offset-2'>
-              <img src='https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' />
+              <img src={userData?.photoURL? userData.photoURL : 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'} />
             </div>
             <section
                 className={`absolute right-0 mt-10 w-48 rounded-md shadow-lg transition-transform transform px-2 ${
@@ -54,11 +57,11 @@ function Navbar(){
                 <ul className="py-2 space-y-4">
                     <li>
                         <h5 onClick={()=>setShowDropdown(false)} className="block w-full px-4 py-2 text-left text-defaultColor hover:bg-gray-100 text-xl font-semibold">
-                            User Name
+                            {userData.displayName}
                         </h5>
                     </li>
                     <li>
-                        <button onClick={()=>setShowDropdown(false)} className="block active !border-red-700 !bg-red-700 w-full">
+                        <button onClick={()=>{setShowDropdown(false);signOutUser()}} className="block active !border-red-700 !bg-red-700 w-full">
                             Logout
                         </button>
                     </li>
@@ -87,7 +90,9 @@ function Navbar(){
               </li>
                 )
               }
-              <NavLink to="/registration/signIn" className={({isActive})=> isActive? "active":"inActive"}>Login</NavLink>
+              {
+                userData?.email? "":<NavLink to="/registration/signIn" className={({isActive})=> isActive? "active":"inActive"}>Sign In</NavLink>
+              }
             </ul>
           </section>
         </nav>
