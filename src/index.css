@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&family=Kaushan+Script&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+  .sectionHeading{
+    @apply text-5xl font-logo text-defaultColor font-bold
+  }
+  .defaultStyle{
+    @apply px-7 py-1 rounded-e-full rounded-s-full border-[2px] border-defaultColor text-xl font-semibold whitespace-nowrap
+  }
+  .active{
+    @apply bg-defaultColor text-white defaultStyle 
+  }
+  .inActive{
+    @apply   text-defaultColor defaultStyle
+  }
+  .form_btn{
+    @apply px-8 py-1 rounded-e-full rounded-s-full border-[1px] border-defaultColor text-defaultColor font-semibold w-full hover:bg-defaultColor hover:text-white transition-all duration-300
+  }
+  .input_section{
+    @apply flex flex-col justify-center items-start text-lg font-semibold text-defaultColor my-4
+  }
+  .default_input{
+    @apply bg-transparent border-b-[1px] border-defaultColor font-semibold w-full focus:outline-none placeholder:text-pink-200 pl-3 italic
+  }
+}

@@ -1,0 +1,29 @@
+[
+    {
+        "id":2154,
+      "name": "Almonds",
+      "category": "Nuts",
+      "image": "https://example.com/images/almonds.jpg",
+      "rating": 4.8,
+      "quantity": "500g",
+      "description": "Almonds are nutrient-rich nuts packed with antioxidants, healthy fats, and protein."
+    },
+    {
+        "id":21485,
+      "name": "Cashews",
+      "category": "Nuts",
+      "image": "https://example.com/images/cashews.jpg",
+      "rating": 4.6,
+      "quantity": "250g",
+      "description": "Cashews are creamy and delicious nuts that are high in healthy fats and vitamins."
+    },
+    {
+        "id":2458,
+      "name": "Raisins",
+      "category": "Dried Fruits",
+      "image": "https://example.com/images/raisins.jpg",
+      "rating": 4.4,
+      "quantity": "300g",
+      "description": "Raisins are dried grapes known for their natural sweetness and rich nutrient content."
+    }
+  ]
