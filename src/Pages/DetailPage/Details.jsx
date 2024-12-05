@@ -6,24 +6,40 @@ import { RiEdit2Line } from "react-icons/ri";
 import {
   Link,
   useLoaderData,
+  useNavigate,
   useParams,
 } from "react-router-dom";
 import { useCURD } from "../../AllProviders/CURDProvider";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import { useState } from "react";
+import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function Details() {
     const [isFavorite, setIsFavorite] = useState(false)
-    const {addFavorite} = useCURD()
+    const {addFavorite,favMovies,deleteProduct} = useCURD()
+    const redirect = useNavigate();
     const {userData} = useAuth();
     const cardData = useLoaderData()
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const { ID } = useParams();
 
-  function handleFavMovies(){
+  function handleMovies(id){
+
+    if(id){
+        deleteProduct(id);
+        redirect("/allMovies")
+        return;
+    }
     const email = userData?.email;
-    const newData = {...cardData, email:email};
-    addFavorite(newData)
+    const {_id,...remainingCardData} = cardData;
+    const newData = {...remainingCardData, email:email};
+    const titleArray = favMovies?.map(({title})=>title)
+    if(titleArray.includes(newData.title)){
+        toastAlert("error","Already existed in Favorite List");
+        return;
+    }else{
+            addFavorite(newData)
+    }
   }
 
   return (
@@ -74,13 +90,13 @@ function Details() {
                 <Rating value={rating} />
               </div>
               <section className="text-left flex gap-4">
-            <button onClick={handleFavMovies} className='text-3xl text-gray-500'>
+            <button onClick={handleMovies} className='text-3xl text-gray-500'>
               {isFavorite? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <Link to={`/production/${_id}`} className="text-3xl">
               <RiEdit2Line fill="gray" size={30} />
             </Link>
-            <button className="text-3xl">
+            <button onClick={()=>handleMovies(_id)} className="text-3xl">
               <MdDeleteForever fill="#f3311685" size={30} />
             </button>
           </section>

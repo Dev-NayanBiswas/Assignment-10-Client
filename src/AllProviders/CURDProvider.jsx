@@ -1,6 +1,7 @@
 import { useContext, useState} from "react";
 import { CURDContext } from "../Utilities/Scripts/AllContexts"
 import toastAlert from "../Utilities/Scripts/toastAlert";
+import { useNavigate } from "react-router-dom";
 
 function CURDProvider({children}){
 
@@ -85,7 +86,7 @@ function CURDProvider({children}){
                 if(result.deletedCount){
                     const removeFromState = allData?.filter(data=> data._id !== ID);
                     setAllData(removeFromState);
-                    toastAlert("info", "Successfully Deleted")
+                    toastAlert("info", "Successfully Deleted");
                 }
             }else{
                 throw new Error(`Error in Delete Method status : ${response.status}`)
