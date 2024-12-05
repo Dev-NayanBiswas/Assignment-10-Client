@@ -1,6 +1,6 @@
 import { useContext, useState} from "react";
 import { CURDContext } from "../Utilities/Scripts/AllContexts"
-import { useAuth } from "./AuthProvider";
+import toastAlert from "../Utilities/Scripts/toastAlert";
 
 function CURDProvider({children}){
 
@@ -22,10 +22,10 @@ function CURDProvider({children}){
                 throw new Error(`Error in Updating Data Status : ${response.status}`)
             }else{
                 const result = await response.json();
-                console.log(result)
+                toastAlert("success",`${data.title} has Updated`)
             }
         }catch(error){
-            console.error(error.message)
+            toastAlert("error",error.message)
         }
     }
 
@@ -44,11 +44,11 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Favorite Movie ${response.status}`)
             }else{
                 const result = await response.json();
-                console.log(result)
                 setFavMovies([...favMovies, data])
+                toastAlert("success",`${data.title} added to Favorite List`)
             }
         }catch(error){
-
+            toastAlert("error", error.message)
         }
     } 
 
@@ -66,10 +66,11 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Products status : ${response.status}`)
             }else{
                 const result =  await response.json();
-                setAllData([...allData,data])
+                setAllData([...allData,data]);
+                toastAlert("success",`${data.title} added to Movies`)
             }
         }catch(error){
-            alert(error.message)
+            toastAlert("error",error.message)
         }
     }
 
@@ -84,12 +85,13 @@ function CURDProvider({children}){
                 if(result.deletedCount){
                     const removeFromState = allData?.filter(data=> data._id !== ID);
                     setAllData(removeFromState);
+                    toastAlert("info", "Successfully Deleted")
                 }
             }else{
                 throw new Error(`Error in Delete Method status : ${response.status}`)
             }
         }catch(error){
-            console.error(error.message)
+            toastAlert("error",error.message)
         }
     }
 

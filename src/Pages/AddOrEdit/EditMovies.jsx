@@ -3,30 +3,13 @@ import { MultiSelect } from "react-multi-select-component";
 import { imageUploader } from "../../Utilities/Scripts/imageUploader";
 import ReactStars from "react-rating-stars-component";
 import { useCURD } from "../../AllProviders/CURDProvider";
-import { useLoaderData, useParams } from "react-router-dom";
 
-function AddMovies() {
-  const { addProduct,updateOne } = useCURD();
-  const {ID} = useParams();
-  const data = useLoaderData();
-  console.log(data)
 
-  const isEdit = !!(ID && data);
+function EditMovies() {
+  const { updateOne } = useCURD();
 
   //! Initialize react-hook-form
-  const {control,register, handleSubmit, setValue, watch, formState: { errors }, setError, clearErrors, reset } = useForm({defaultValues : {
-    title:data?.title || "", 
-    thumbnail:data?.thumbnail || "", 
-    summary:data?.summary || "", 
-    release:data?.release || 0, 
-    rating:data?.rating || 0, 
-    genre:data?.genre?  data?.genre?.map((genre)=>({
-      value:genre,
-      label:genre.charAt(0).toUpperCase() + genre.slice(1)
-    })) 
-    :[], 
-    duration:0
-  }});
+  const {control,register, handleSubmit, setValue, watch, formState: { errors }, setError, clearErrors, reset } = useForm();
 
   //! Watch rating for real-time updates
   const currentRating = watch("rating" || 0);
@@ -65,15 +48,9 @@ function AddMovies() {
     if(updateData.genre?.length){
         const genreValue = updateData.genre.map(elem=>elem.value);
         updateData = {...updateData, genre:genreValue};
-        if(isEdit){
-          updateOne(updateData,ID)
-          reset();
-          return;
-        }else{
-          addProduct(updateData);
-          reset();
-          return;
-        }
+        // updateOne(updateData, ID);
+        console.log(updateData)
+        // reset();
     }else{
       setError(
         "genre",{
@@ -92,16 +69,16 @@ function AddMovies() {
       <section>
       <section className="flex justify-center items-center mb-5 gap-4">
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
-            <h1 className="sectionHeading !font-space my-8">{isEdit? "Update Movie" : "Add Movie"}</h1>
+            <h1 className="sectionHeading !font-space my-8">Update Movie</h1>
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
             </section>
       </section>
       <section
-        className= {isEdit? "flex lg:flex-row-reverse flex-col" : "flex lg:flex-row flex-col"}>
+        className= "flex lg:flex-row-reverse flex-col">
         <figure className="h-[60vh] w-full aspect-square flex-1">
           <img
             className="h-full w-full object-contain"
-            src={imageUploader(isEdit ? "UpdateMovie.svg" : "EditMovies.svg")}
+            src={imageUploader("EditMovies.svg")}
             alt=""
           />
         </figure>
@@ -331,7 +308,7 @@ function AddMovies() {
           {/* Submit Button */}
           <section className="w-8/12 mx-auto">
             <button className="form_btn" type="submit">
-            {isEdit? "Update Movie" : "Add Movie"}
+              Update Movie
             </button>
           </section>
         </form>
@@ -340,4 +317,4 @@ function AddMovies() {
   );
 }
 
-export default AddMovies;
+export default EditMovies;
