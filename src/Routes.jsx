@@ -2,7 +2,6 @@ import { createBrowserRouter, Navigate } from "react-router-dom"
 import MainLayout from "./MainLayout"
 import ErrorPage from "./Pages/ErrorPage/ErrorPage"
 import Home from "./Pages/Home/Home"
-import AddOrEdit from "./Pages/AddOrEdit/AddOrEdit"
 import Details from "./Pages/DetailPage/Details"
 import Registration from "./Pages/Registration/Registration"
 import SignUp from "./Pages/Registration/SignUp"
@@ -12,6 +11,7 @@ import MyFavorites from "./Pages/MyFavorites/MyFavorites"
 import FAQ from "./Pages/FAQ/FAQ"
 import ForgetPassword from "./Pages/Registration/ForgetPassword"
 import PrivateRoute from "./Pages/Private/PrivateRoute"
+import AddMovies from "./Pages/AddOrEdit/AddMovies"
 
 const Routes = createBrowserRouter([
     {
@@ -43,7 +43,7 @@ const Routes = createBrowserRouter([
                 path:"production/:ID?",
                 loader:({params})=>fetch(`http://localhost:5000/movies/${params.ID||"b51715dbd2ff48f4a4c64025"}`),
                 element:<PrivateRoute>
-                    <AddOrEdit/>
+                    <AddMovies/>
                 </PrivateRoute>
             },
             {

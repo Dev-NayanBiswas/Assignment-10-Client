@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+.multiSelect{
+  border-radius: 0%;
+  
+}
+
 @layer utilities{
   .sectionHeading{
     @apply text-5xl font-logo text-defaultColor font-bold

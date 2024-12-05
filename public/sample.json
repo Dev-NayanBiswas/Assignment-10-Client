@@ -1,29 +1,219 @@
 [
-    {
-        "id":2154,
-      "name": "Almonds",
-      "category": "Nuts",
-      "image": "https://example.com/images/almonds.jpg",
-      "rating": 4.8,
-      "quantity": "500g",
-      "description": "Almonds are nutrient-rich nuts packed with antioxidants, healthy fats, and protein."
-    },
-    {
-        "id":21485,
-      "name": "Cashews",
-      "category": "Nuts",
-      "image": "https://example.com/images/cashews.jpg",
-      "rating": 4.6,
-      "quantity": "250g",
-      "description": "Cashews are creamy and delicious nuts that are high in healthy fats and vitamins."
-    },
-    {
-        "id":2458,
-      "name": "Raisins",
-      "category": "Dried Fruits",
-      "image": "https://example.com/images/raisins.jpg",
-      "rating": 4.4,
-      "quantity": "300g",
-      "description": "Raisins are dried grapes known for their natural sweetness and rich nutrient content."
-    }
-  ]
+  {
+    "thumbnail": "https://i.ibb.co.com/P1kJqtm/shawshank.jpg",
+    "title": "The Shawshank Redemption",
+    "genre": "Drama",
+    "release": 1994,
+    "duration": 142,
+    "rating": 5,
+    "summary": "Wrongly accused banker Andy Dufresne bonds with Red in Shawshank Prison. Stars Tim Robbins and Morgan Freeman."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/7RGBTZk/god-the-father.jpg",
+    "title": "The Godfather",
+    "genre": "Crime, Drama",
+    "release": 1972,
+    "duration": 175,
+    "rating": 5,
+    "summary": "The rise of Michael Corleone in a powerful mafia family. Stars Marlon Brando and Al Pacino."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/C6wZDGn/dark-knight.jpg",
+    "title": "The Dark Knight",
+    "genre": "Action, Crime",
+    "release": 2008,
+    "duration": 152,
+    "rating": 5,
+    "summary": "Batman faces the Joker in a gripping Gotham tale. Stars Christian Bale and Heath Ledger."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/tQJbcwg/schindlers-list.jpg",
+    "title": "Schindler's List",
+    "genre": "Drama, History",
+    "release": 1993,
+    "duration": 195,
+    "rating": 5,
+    "summary": "Oskar Schindler saves Jewish lives during the Holocaust. Stars Liam Neeson and Ben Kingsley."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/DttyJGb/lord.jpg",
+    "title": "The Lord of the Rings: The Return of the King",
+    "genre": "Adventure, Fantasy",
+    "release": 2003,
+    "duration": 201,
+    "rating": 5,
+    "summary": "Frodo completes his quest to destroy the One Ring. Stars Elijah Wood and Ian McKellen."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/VgP0G7X/pulp-fiction.jpg",
+    "title": "Pulp Fiction",
+    "genre": "Crime, Drama",
+    "release": 1994,
+    "duration": 154,
+    "rating": 5,
+    "summary": "Interwoven tales of crime in LA. Stars John Travolta, Uma Thurman, and Samuel L. Jackson."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/KXK84SH/forrest-gump.jpg",
+    "title": "Forrest Gump",
+    "genre": "Drama, Romance",
+    "release": 1994,
+    "duration": 142,
+    "rating": 5,
+    "summary": "Forrest lives a unique life influencing history. Stars Tom Hanks and Robin Wright."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/HxzmMRz/fight-club-ver3.jpg",
+    "title": "Fight Club",
+    "genre": "Drama",
+    "release": 1999,
+    "duration": 139,
+    "rating": 4,
+    "summary": "A disillusioned man forms an underground fight club. Stars Brad Pitt and Edward Norton."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/VDHZbbS/inception-ver4.jpg",
+    "title": "Inception",
+    "genre": "Action, Sci-Fi",
+    "release": 2010,
+    "duration": 148,
+    "rating": 5,
+    "summary": "A thief enters dreams to steal secrets. Stars Leonardo DiCaprio and Joseph Gordon-Levitt."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/52v1gkh/matrix-resurrections-ver2.jpg",
+    "title": "The Matrix",
+    "genre": "Sci-Fi, Action",
+    "release": 1999,
+    "duration": 136,
+    "rating": 5,
+    "summary": "Neo discovers the truth of the Matrix. Stars Keanu Reeves, Laurence Fishburne, and Carrie-Anne Moss."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/Rj0dwT3/seven-ver2.jpg",
+    "title": "Se7en",
+    "genre": "Crime, Thriller",
+    "release": 1995,
+    "duration": 127,
+    "rating": 4,
+    "summary": "Detectives hunt a killer using seven deadly sins. Stars Brad Pitt and Morgan Freeman."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/CW3bg6Y/gladiator-ver1.jpg",
+    "title": "Gladiator",
+    "genre": "Action, Drama",
+    "release": 2000,
+    "duration": 155,
+    "rating": 5,
+    "summary": "A betrayed general seeks vengeance in Rome. Stars Russell Crowe and Joaquin Phoenix."
+  },
+  {
+    
+    "thumbnail": "https://i.ibb.co.com/JRyYh6y/interstellar-ver2.jpg",
+    "title": "Interstellar",
+    "genre": "Adventure, Sci-Fi",
+    "release": 2014,
+    "duration": 169,
+    "rating": 5,
+    "summary": "A team explores space to save humanity. Stars Matthew McConaughey and Anne Hathaway."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/Ypkz9Jy/parasite-ver2.jpg",
+    "title": "Parasite",
+    "genre": "Drama, Thriller",
+    "release": 2019,
+    "duration": 132,
+    "rating": 5,
+    "summary": "A poor family infiltrates a wealthy household. Stars Song Kang-ho and Lee Sun-kyun."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/4M6tTgZ/star-wars-the-last-jedi-ver2.jpg",
+    "title": "Star Wars: Episode IV - A New Hope",
+    "genre": "Adventure, Sci-Fi",
+    "release": 1977,
+    "duration": 121,
+    "rating": 5,
+    "summary": "Luke Skywalker fights the Empire. Stars Mark Hamill, Harrison Ford, and Carrie Fisher."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/fSnwyW7/goodfellas.jpg",
+    "title": "Goodfellas",
+    "genre": "Crime, Biography",
+    "release": 1990,
+    "duration": 145,
+    "rating": 5,
+    "summary": "Henry Hill chronicles his life in the mob. Stars Ray Liotta, Robert De Niro, and Joe Pesci."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/Z8WT7yy/silence-of-the-lambs-ver2.jpg",
+    "title": "The Silence of the Lambs",
+    "genre": "Crime, Thriller",
+    "release": 1991,
+    "duration": 118,
+    "rating": 5,
+    "summary": "FBI trainee seeks help from Hannibal Lecter. Stars Jodie Foster and Anthony Hopkins."
+  },
+  {
+    "thumbnail": "https://i.ibb.co.com/VW7PSCg/casablanca.jpg",
+    "title": "Casablanca",
+    "genre": "Drama, Romance",
+    "release": 1942,
+    "duration": 102,
+    "rating": 5,
+    "summary": "A love story during World War II. Stars Humphrey Bogart and Ingrid Bergman."
+  },
+  {
+    "thumbnail": "https://example.com/jurassic_park.jpg",
+    "title": "Jurassic Park",
+    "genre": "Adventure, Sci-Fi",
+    "release": "1993",
+    "duration": "127",
+    "rating": 5,
+    "summary": "Dinosaurs come alive in a theme park. Stars Sam Neill, Laura Dern, and Jeff Goldblum."
+  },
+  {
+    "thumbnail": "https://example.com/titanic.jpg",
+    "title": "Titanic",
+    "genre": "Drama, Romance",
+    "release": "1997",
+    "duration": "195",
+    "rating": 5,
+    "summary": "A love story aboard the doomed Titanic. Stars Leonardo DiCaprio and Kate Winslet."
+  },
+  {
+    "thumbnail": "https://example.com/avatar.jpg",
+    "title": "Avatar",
+    "genre": "Sci-Fi, Adventure",
+    "release": "2009",
+    "duration": "162",
+    "rating": 4,
+    "summary": "Humans and Na'vi clash on Pandora. Stars Sam Worthington and Zoe Saldana."
+  },
+  {
+    "thumbnail": "https://example.com/avengers_endgame.jpg",
+    "title": "Avengers: Endgame",
+    "genre": "Action, Sci-Fi",
+    "release": "2019",
+    "duration": "181",
+    "rating": 4,
+    "summary": "Avengers battle Thanos to restore balance. Stars Robert Downey Jr. and Chris Evans."
+  },
+  {
+    "thumbnail": "https://example.com/incredibles.jpg",
+    "title": "The Incredibles",
+    "genre": "Animation, Action",
+    "release": "2004",
+    "duration": "115",
+    "rating": 4,
+    "summary": "A family of superheroes balances life and duty. Stars Craig T. Nelson and Holly Hunter."
+  },
+  {
+    "thumbnail": "https://example.com/lion_king.jpg",
+    "title": "The Lion King",
+    "genre": "Animation, Drama",
+    "release": "1994",
+    "duration": "88",
+    "rating": 5,
+    "summary": "A lion cub becomes a king. Stars Matthew Broderick and James Earl Jones."
+  }
+]

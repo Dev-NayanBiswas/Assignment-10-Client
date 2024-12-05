@@ -1,33 +1,18 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm} from "react-hook-form";
+import { MultiSelect } from "react-multi-select-component";
 import { imageUploader } from "../../Utilities/Scripts/imageUploader";
 import ReactStars from "react-rating-stars-component";
-import { useLoaderData, useParams } from "react-router-dom";
 import { useCURD } from "../../AllProviders/CURDProvider";
-import { useState } from "react";
 
-function AddOrEdit() {
-  const { addProduct, updateOne } = useCURD();
-  const { ID } = useParams();
-  const data = useLoaderData();
-
-  //! Edit OR Add Mode
-  const [isEdit, setIsEdit] = useState(!!(ID && Object.keys(data).length));
+function AddMovies() {
+  const { addProduct } = useCURD();
 
   //! Initialize react-hook-form
-  const { register, handleSubmit, setValue, watch, formState: { errors }, setError, clearErrors } = useForm({
-    defaultValues: data || {
-      thumbnail: "",
-      title: "",
-      genre: [],
-      release: "",
-      duration:"",
-      rating: 0,  
-      summary: "",
-    },
-  });
+  const {control,register, handleSubmit, setValue, watch, formState: { errors }, setError, clearErrors, reset } = useForm();
 
   //! Watch rating for real-time updates
   const currentRating = watch("rating" || 0);
+
 
   const genreOptions = [
     { value: "action", label: "Action" },
@@ -35,18 +20,21 @@ function AddOrEdit() {
     { value: "drama", label: "Drama" },
     { value: "horror", label: "Horror" },
     { value: "sci-fi", label: "Sci-Fi" },
+    { value: "history", label: "History" },
+    { value: "crime", label: "Crime" },
   ]
-  const releaseYear = [
-    { value: 2021, label: 2021 },
-    { value: 2022, label: 2022 },
-    { value: 2023, label: 2023 },
-    { value: 2024, label: 2024 },
-    { value: 2025, label: 2025 },
-  ]
+
+  const thisYear = new Date().getFullYear();
+  const releaseYear = Array(20).fill(null).map((_,index)=>thisYear-index);
+
 
   //! Submit Handler
   function formHandler(data){
-    console.log(data.rating)
+    let updateData = data;
+    if(data.release && data.duration){
+      updateData={...updateData, release:Number(updateData.release)};
+      updateData={...updateData, duration:Number(updateData.duration)};
+    }
     if(!data.rating || data.rating === 0){
         setError(
             "rating",{
@@ -56,15 +44,20 @@ function AddOrEdit() {
         )
         return;
     }
-    if(data.genre){
-        const genreValue = data.genre.split(",");
-        const updateData = {...data, genre:genreValue};
-        console.log(updateData);
-        if (isEdit) {
-            updateOne(updateData, ID);
-          } else {
-            addProduct(updateData);
-          }
+    if(updateData.genre?.length){
+        const genreValue = updateData.genre.map(elem=>elem.value);
+        updateData = {...updateData, genre:genreValue};
+        addProduct(updateData);
+        console.log(updateData)
+        reset();
+    }else{
+      setError(
+        "genre",{
+            type:"manual",
+            message:"Select Genre"
+        }
+    )
+    return;
     }
     
     
@@ -75,20 +68,16 @@ function AddOrEdit() {
       <section>
       <section className="flex justify-center items-center mb-5 gap-4">
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
-            <h1 className="sectionHeading !font-space my-8">{isEdit? "Update Movie" : "Add Movie"}</h1>
+            <h1 className="sectionHeading !font-space my-8">Add Movie</h1>
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
             </section>
       </section>
       <section
-        className={
-          isEdit
-            ? "grid lg:grid-cols-2 grid-cols-1"
-            : "flex lg:flex-row-reverse flex-col"
-        }>
+        className= "flex lg:flex-row-reverse flex-col">
         <figure className="h-[60vh] w-full aspect-square flex-1">
           <img
             className="h-full w-full object-contain"
-            src={imageUploader(isEdit ? "UpdateMovie.svg" : "EditMovies.svg")}
+            src={imageUploader("EditMovies.svg")}
             alt=""
           />
         </figure>
@@ -105,7 +94,12 @@ function AddOrEdit() {
             </label>
             <input
               id="title"
-              {...register("title", { required: "Title is required" })}
+              {...register("title", { required: "Title is required",
+                minLength:{
+                  value:2,
+                  message:"Title Should've minimum 2 characters"
+                }
+               })}
               placeholder="Movie Title"
               className="default_input"
             />
@@ -116,29 +110,66 @@ function AddOrEdit() {
 
           {/* Genre & Release */}
           <section className="flex lg:flex-row flex-col gap-4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {/* Genre */}
           <section className="input_section flex-1">
-            <label htmlFor="genre" className="text-left">
-              Genre
-            </label>
-            <select 
-            name="genre" 
-            id="genre"
-            {...register("genre", { required: "Genre is required" })}
-              placeholder="Genre"
-              className="default_input"
-            >
-            <option></option>
-                {genreOptions.map(({ value, label }) => (
-      <option className="bg-gray-300" value={value} key={value}>
-        {label}
-      </option>
-    ))}
-            </select>
-            {errors.genre && (
-              <p className="text-xs text-red-500 italic">{errors.genre.message}</p>
-            )}
-          </section>
+            <label htmlFor="genre">Genre</label>
+          <Controller
+        name="genre"
+        id="genre"
+        control={control}
+        defaultValue={[]}
+        render={({ field: { onChange, value } }) => (
+          <MultiSelect
+      options={genreOptions}
+      value={value}
+      onChange={(value) => {
+        onChange(value); 
+        if (value.length > 0) {
+          clearErrors("genre");
+        }
+      }}
+      labelledBy="Select"
+      hasSelectAll={false}
+      className="bg-transparent w-full outline-none text-defaultColor font-semibold"
+    />
+        )}
+      />
+      {errors.genre && (
+        <p className="text-red-500 text-sm">
+          {errors.genre.message || "Genre selection is required"}
+        </p>
+      )}
+
+      </section>
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Release */}
           <section className="input_section flex-1">
@@ -146,16 +177,17 @@ function AddOrEdit() {
               Release Date
             </label>
             <select 
-            name="release" 
+            name="release"
+            type="number"
             id="release"
             {...register("release", { required: "Release year is required" })}
               placeholder="Release Year"
               className="default_input"
             >
             <option></option>
-                {releaseYear.map(({ value, label }) => (
-      <option className="bg-gray-300" value={value} key={value}>
-        {label}
+                {releaseYear.map((year) => (
+      <option className="bg-base-100" value={year} key={year}>
+        {year}
       </option>
     ))}
             </select>
@@ -209,6 +241,7 @@ function AddOrEdit() {
             </label>
             <input
               id="duration"
+              type="number"
               {...register("duration", { 
                 required: "Duration Required",
                 min:{
@@ -238,7 +271,7 @@ function AddOrEdit() {
               {...register("thumbnail", { 
                 required: "Thumbnail is required",
                 pattern:{
-                    value: /^https:\/\//,
+                    value: /^https?:\/\//,
                     message:"Invalid image URL, try an Image Link"
                   } 
             })}
@@ -257,7 +290,12 @@ function AddOrEdit() {
             </label>
             <textarea
               id="summary"
-              {...register("summary", { required: "Summary is required" })}
+              {...register("summary", { required: "Summary is required",
+                minLength:{
+                  value:10,
+                  message:"Summary should be minimum 10 characters"
+                }
+               })}
               placeholder="Short Summary of the Movie"
               className="default_input"
             />
@@ -269,7 +307,7 @@ function AddOrEdit() {
           {/* Submit Button */}
           <section className="w-8/12 mx-auto">
             <button className="form_btn" type="submit">
-              {isEdit ? "Update Movie" : "Add Movie"}
+              Add Movie
             </button>
           </section>
         </form>
@@ -278,4 +316,4 @@ function AddOrEdit() {
   );
 }
 
-export default AddOrEdit;
+export default AddMovies;

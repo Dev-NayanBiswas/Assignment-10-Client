@@ -8,7 +8,6 @@ import { useAuth } from "../../AllProviders/AuthProvider";
 function Navbar(){
   const [showDropdown, setShowDropdown] = useState(false);
   const {userData,signOutUser} = useAuth()
-  console.log(userData)
   
     const paths = [
         {path:"/", name:"Home"},
