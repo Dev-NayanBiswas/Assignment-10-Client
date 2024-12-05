@@ -73,7 +73,7 @@ function Navbar(){
           </div> : <NavLink to="/registration/signIn" className={({isActive})=> isActive? "active lg:block hidden":"inActive lg:block hidden"}>Login</NavLink>}
           <ThemeToggler/>
           {/* DropDownMenu */}
-          <section className='dropdown dropdown-end lg:hidden'>
+          <section className='dropdown dropdown-end lg:hidden z-50'>
             <button
               tabIndex={0}
               role='button'

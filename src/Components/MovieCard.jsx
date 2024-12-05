@@ -4,14 +4,13 @@ import { Link } from "react-router-dom";
 function ProductCard({itemData}){
     const {_id,title,thumbnail,genre,duration,release,rating} = itemData ||{}
 
-    console.log(itemData)
 
   return (
     <>
         <figure className='cursor-pointer border-gray-50/10 border-[1px]  shadow-xl rounded-bl-xl rounded-br-xl'>
             
-            <figure className="w-full h-[522px]">
-            <img className='w-full h-full mx-auto object-contain object-center mt-6' src={thumbnail} alt='' />
+            <figure className="h-[650px] lg:h-[800px] w-full lg:p-4">
+            <img className="w-full h-full lg:object-contain object-cover" src={thumbnail} alt='' />
             </figure>
             <figcaption className='px-7 py-5 space-y-3'>
               <h3 className='text-2xl my-3 font-semibold'>{title}</h3>

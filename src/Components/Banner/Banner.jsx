@@ -32,11 +32,16 @@ function Banner(){
       };
   return (
     <>
-        <section className="slider-container">
+        <section className="slider-container my-[20vh]">
             <section className="flex justify-center items-center mb-5 gap-4">
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
             <h1 className="sectionHeading">New Released</h1>
             <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+            </section>
+            <section>
+                <p className="lg:w-8/12 md:w-10/12 w-full px-3 mx-auto text-center my-6">
+                Your ultimate online movie portal awaits! Discover, explore, and enjoy the magic of cinema like never before. From timeless classics to the latest blockbusters, we've got something for every movie lover. Dive in, rate your favorites, and share the joy of storytelling. Happy watching!
+                </p>
             </section>
             
         <Slider {...settings} className="slider-container">

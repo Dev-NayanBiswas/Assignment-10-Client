@@ -1,8 +1,12 @@
 import { useContext, useState} from "react";
 import { CURDContext } from "../Utilities/Scripts/AllContexts"
+import { useAuth } from "./AuthProvider";
 
 function CURDProvider({children}){
+
+
     const [allData, setAllData]=useState([])
+    const [favMovies, setFavMovies]=useState([])
 
     //! PUT Method 
     async function updateOne(data, ID){
@@ -25,7 +29,30 @@ function CURDProvider({children}){
         }
     }
 
-    //!POST Method 
+    //! Add to Favorite
+    async function addFavorite(data){
+        try{
+            
+            const response = await fetch("http://localhost:5000/favMovies",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json",
+                },
+                body:JSON.stringify(data)
+            });
+            if(!response.ok){
+                throw new Error(`Error in adding Favorite Movie ${response.status}`)
+            }else{
+                const result = await response.json();
+                console.log(result)
+                setFavMovies([...favMovies, data])
+            }
+        }catch(error){
+
+        }
+    } 
+
+    //!Add a New Movie 
     async function addProduct(data){
         try{
             const response = await fetch('http://localhost:5000/movies',{
@@ -46,7 +73,7 @@ function CURDProvider({children}){
         }
     }
 
-    //! Delete Method 
+    //! Delete Method from Movies
     async function deleteProduct(ID){
         try{
             const response = await fetch(`http://localhost:5000/movies/${ID}`,{
@@ -67,11 +94,14 @@ function CURDProvider({children}){
     }
 
     const CURDoperations ={
+        favMovies,
+        setFavMovies,
         allData,
         updateOne,
         setAllData,
         addProduct,
-        deleteProduct
+        deleteProduct,
+        addFavorite
     }
   return (
     <CURDContext.Provider value={CURDoperations}>
@@ -79,7 +109,10 @@ function CURDProvider({children}){
     </CURDContext.Provider>
   )
 }
-export function useCURD(){
-    return useContext(CURDContext);
+
+export default CURDProvider;
+
+function useCURD(){
+    return useContext(CURDContext)
 }
-export default CURDProvider
+export {useCURD};

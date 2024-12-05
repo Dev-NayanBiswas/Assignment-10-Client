@@ -2,16 +2,27 @@ import { GoHeart } from "react-icons/go";
 import { GoHeartFill } from "react-icons/go";
 import { MdDeleteForever } from "react-icons/md";
 import { RiStarFill } from "react-icons/ri";
+import { RiEdit2Line } from "react-icons/ri";
 import {
   Link,
   useLoaderData,
   useParams,
 } from "react-router-dom";
+import { useCURD } from "../../AllProviders/CURDProvider";
+import { useAuth } from "../../AllProviders/AuthProvider";
 
 function Details() {
-  const { title, thumbnail, summary, release, rating, genre, duration, isFavorite } =
-    useLoaderData() || {};
+    const {addFavorite} = useCURD()
+    const {userData} = useAuth();
+    const cardData = useLoaderData()
+  const { title, thumbnail, summary, release, rating, genre, duration, isFavorite } = cardData || {};
   const { ID } = useParams();
+
+  function handleFavMovies(){
+    const email = userData?.email;
+    const newData = {...cardData, email:email};
+    addFavorite(newData)
+  }
 
   return (
     <>
@@ -24,7 +35,7 @@ function Details() {
         </section>
           <section className=" my-8">
           <section className='relative flex lg:flex-row flex-col items-center justify-center lg:w-8/12 mx-auto'>
-            <section className='bg-green-400 lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full z-50'>
+            <section className='lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full z-50'>
               <img
                 className='object-cover md:w-full md:object-top h-full'
                 src={thumbnail}
@@ -61,11 +72,14 @@ function Details() {
                 <Rating value={rating} />
               </div>
               <section className="text-left flex gap-4">
-            <button className='text-3xl text-gray-500'>
+            <button onClick={handleFavMovies} className='text-3xl text-gray-500'>
               {isFavorite? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <button className="text-3xl">
-              <MdDeleteForever fill="#f33116" size={30} />
+              <RiEdit2Line fill="gray" size={30} />
+            </button>
+            <button className="text-3xl">
+              <MdDeleteForever fill="#f3311685" size={30} />
             </button>
           </section>
             </section>
