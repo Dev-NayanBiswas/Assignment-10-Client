@@ -4,12 +4,14 @@ import { imageUploader } from "../../Utilities/Scripts/imageUploader";
 import ReactStars from "react-rating-stars-component";
 import { useCURD } from "../../AllProviders/CURDProvider";
 import { useLoaderData, useParams } from "react-router-dom";
+import { useAuth } from "../../AllProviders/AuthProvider";
 
 function AddMovies() {
-  const { addProduct,updateOne } = useCURD();
+  const { addProduct,updateOne,addFavorite } = useCURD();
+  const {userData} = useAuth();
   const {ID} = useParams();
   const data = useLoaderData();
-  console.log(data)
+  const currentUserEmail = userData?.email;
 
   const isEdit = !!(ID && data);
 
@@ -71,6 +73,8 @@ function AddMovies() {
           return;
         }else{
           addProduct(updateData);
+          const newData = {...updateData,email:currentUserEmail};
+          addFavorite(newData)
           reset();
           return;
         }

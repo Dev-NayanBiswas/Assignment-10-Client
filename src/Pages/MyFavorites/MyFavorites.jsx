@@ -2,15 +2,17 @@ import { useEffect } from "react";
 import { useCURD } from "../../AllProviders/CURDProvider"
 import toastAlert from "../../Utilities/Scripts/toastAlert";
 import FavCard from "../../Components/FavCard";
+import { useAuth } from "../../AllProviders/AuthProvider";
 
 function MyFavorites(){
   const {favMovies, setFavMovies} = useCURD();
+  const {userData} = useAuth()
 
   useEffect(()=>{
     (
       async()=>{
         try{
-          const response = await fetch("http://localhost:5000/favMovies");
+          const response = await fetch(`http://localhost:5000/favMovies/${userData?.email}`);
           if(!response.ok){
             throw new Error(`Error in Loading FavMovies ${response.status}`)
           }else{

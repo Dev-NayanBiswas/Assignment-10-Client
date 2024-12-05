@@ -23,13 +23,7 @@ function Details() {
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const { ID } = useParams();
 
-  function handleMovies(id){
-
-    if(id){
-        deleteProduct(id);
-        redirect("/allMovies")
-        return;
-    }
+  function handleMovies(){
     const email = userData?.email;
     const {_id,...remainingCardData} = cardData;
     const newData = {...remainingCardData, email:email};
@@ -40,6 +34,12 @@ function Details() {
     }else{
             addFavorite(newData)
     }
+  }
+
+  function handleDelete(id){
+        deleteProduct(id);
+        redirect("/allMovies")
+        return;
   }
 
   return (
@@ -96,7 +96,7 @@ function Details() {
             <Link to={`/production/${_id}`} className="text-3xl">
               <RiEdit2Line fill="gray" size={30} />
             </Link>
-            <button onClick={()=>handleMovies(_id)} className="text-3xl">
+            <button onClick={()=>handleDelete(_id)} className="text-3xl">
               <MdDeleteForever fill="#f3311685" size={30} />
             </button>
           </section>
