@@ -8,7 +8,7 @@ function ErrorPage(){
     <>
       <section className="h-screen w-full overflow-x-hidden text-white/20 flex justify-center gap-3 items-center my-14">
       <section className="text-center text-black space-y-3">
-        <figure className="md:h-[40vh] h-[30vh] flex justify-center items-center mb-10">
+        <figure className="md:h-[30vh] h-[30vh] flex justify-center items-center mb-10">
         <LostSVG/>
         </figure>
       <h1 className="md:text-5xl text-4xl text-red-400 font-bold">Oops!</h1>

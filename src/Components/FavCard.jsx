@@ -1,8 +1,8 @@
 import { MdDeleteForever } from "react-icons/md";
 import { RiStarFill } from "react-icons/ri";
 
-function FavCard({cardData}){
-    const { title, thumbnail, summary, release, rating, genre, duration, isFavorite } = cardData || {};
+function FavCard({cardData, onDelete}){
+    const {_id, title, thumbnail, summary, release, rating, genre, duration, isFavorite } = cardData || {};
   return (
     <>
         
@@ -20,7 +20,7 @@ function FavCard({cardData}){
                 <p className="font-semibold">Released on {release}</p>
                 <p className="flex gap-1 items-center">IMDB <Rating value={rating}/></p>
                 </section>
-                <button className="inActive self-start ml-4 flex items-center gap-3">Delete <MdDeleteForever/></button>
+                <button onClick={()=>onDelete(_id)} className="inActive self-start ml-4 flex items-center gap-3">Delete <MdDeleteForever/></button>
                 </section>
             </section>
 

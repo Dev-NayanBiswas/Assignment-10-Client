@@ -11,17 +11,24 @@ import {
 } from "react-router-dom";
 import { useCURD } from "../../AllProviders/CURDProvider";
 import { useAuth } from "../../AllProviders/AuthProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function Details() {
     const [isFavorite, setIsFavorite] = useState(false)
-    const {addFavorite,favMovies,deleteProduct} = useCURD()
+    const {addFavorite,favMovies, setFavMovies,deleteProduct} = useCURD()
     const redirect = useNavigate();
     const {userData} = useAuth();
     const cardData = useLoaderData()
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const { ID } = useParams();
+
+  useEffect(()=>{
+    const favTitles = favMovies?.map(({title})=>title);
+    if(favTitles.includes(title)){
+        setIsFavorite(true)
+    }
+  },[cardData,favMovies])
 
   function handleMovies(){
     const email = userData?.email;
@@ -32,7 +39,8 @@ function Details() {
         toastAlert("error","Already existed in Favorite List");
         return;
     }else{
-            addFavorite(newData)
+            addFavorite(newData);
+            // setFavMovies([...favMovies, newData])
     }
   }
 
@@ -90,7 +98,7 @@ function Details() {
                 <Rating value={rating} />
               </div>
               <section className="text-left flex gap-4">
-            <button onClick={handleMovies} className='text-3xl text-gray-500'>
+            <button onClick={handleMovies} className={`text-3xl text-gray-500 ${isFavorite? "pointer-events-none" : "cursor-pointer"}`}>
               {isFavorite? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <Link to={`/production/${_id}`} className="text-3xl">

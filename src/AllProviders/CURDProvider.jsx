@@ -1,7 +1,6 @@
 import { useContext, useState} from "react";
 import { CURDContext } from "../Utilities/Scripts/AllContexts"
 import toastAlert from "../Utilities/Scripts/toastAlert";
-import { useNavigate } from "react-router-dom";
 
 function CURDProvider({children}){
 
@@ -45,13 +44,33 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Favorite Movie ${response.status}`)
             }else{
                 const result = await response.json();
+                console.log(result)
                 setFavMovies([...favMovies, data])
                 toastAlert("success",`${data.title} added to Favorite List`)
             }
         }catch(error){
             toastAlert("error", error.message)
         }
-    } 
+    }
+    
+    //! Delete From Fav Movies 
+    async function deleteFromFavMovies(ID){
+        try{
+            const response = await fetch(`http://localhost:5000/favMovies/${ID}`,{
+                method:"DELETE",
+            });
+            if(!response.ok){
+                throw new Error(`Error in Deleting Favorite Movie`)
+            }else{
+                const result = await response.json();
+                const newFavMovies = favMovies.filter(movie=> movie._id !== ID);
+                setFavMovies(newFavMovies); 
+                toastAlert('success','Successfully Removed');
+            }
+        }catch(error){
+            toastAlert("error",error.message)
+        }
+    }
 
     //!Add a New Movie 
     async function addProduct(data){
@@ -104,7 +123,8 @@ function CURDProvider({children}){
         setAllData,
         addProduct,
         deleteProduct,
-        addFavorite
+        addFavorite,
+        deleteFromFavMovies
     }
   return (
     <CURDContext.Provider value={CURDoperations}>
