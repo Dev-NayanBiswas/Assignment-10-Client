@@ -21,7 +21,7 @@ const Routes = createBrowserRouter([
         children:[
             {
                 path:"/",
-                loader:()=>fetch('http://localhost:5000/movies'),
+                loader:()=>fetch('https://assignment-10-server-kohl-seven.vercel.app/movies'),
                 element:<Home/>
             },
             {
@@ -41,14 +41,14 @@ const Routes = createBrowserRouter([
             },
             {
                 path:"production/:ID?",
-                loader:({params})=>fetch(`http://localhost:5000/movies/${params.ID||"b51715dbd2ff48f4a4c64025"}`),
+                loader:({params})=>fetch(`https://assignment-10-server-kohl-seven.vercel.app/movies/${params.ID||"b51715dbd2ff48f4a4c64025"}`),
                 element:<PrivateRoute>
                     <AddMovies/>
                 </PrivateRoute>
             },
             {
                 path:"details/:ID?",
-                loader:({params})=>fetch(`http://localhost:5000/movies/${params.ID || "b51715dbd2ff48f4a4c64025"}`),
+                loader:({params})=>fetch(`https://assignment-10-server-kohl-seven.vercel.app/movies/${params.ID || "b51715dbd2ff48f4a4c64025"}`),
                 element:<PrivateRoute>
                     <Details/>
                 </PrivateRoute>

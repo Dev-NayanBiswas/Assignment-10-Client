@@ -12,7 +12,7 @@ function CURDProvider({children}){
     //! Favorite Movies Fetcher Function 
     async function favMoviesFetcher(email){
         try{
-            const response = await fetch(`http://localhost:5000/favMovies/${email}`);
+            const response = await fetch(`https://assignment-10-server-kohl-seven.vercel.app/favMovies/${email}`);
             if(!response.ok){
                 throw new Error(`Error happened in Loading Favorite Movies ${response.status}`)
             }else{
@@ -29,7 +29,7 @@ function CURDProvider({children}){
 
     async function allMoviesFetcher(query){
         try{
-            const response = await fetch(`http://localhost:5000/${ query?`movies?searchQuery=${query}` :'movies'}`);
+            const response = await fetch(`https://assignment-10-server-kohl-seven.vercel.app/${ query?`movies?searchQuery=${query}` :'movies'}`);
             if(!response.ok){
                 throw new Error(`Error in loading All Movies ${response.status}`)
             }else{
@@ -48,7 +48,7 @@ function CURDProvider({children}){
     //! PUT Method 
     async function updateOne(data, ID){
         try{
-            const response = await fetch(`http://localhost:5000/movies/${ID}`,{
+            const response = await fetch(`https://assignment-10-server-kohl-seven.vercel.app/movies/${ID}`,{
                 method:"PUT",
                 headers:{
                     "content-type":"application/json",
@@ -72,7 +72,7 @@ function CURDProvider({children}){
     async function addFavorite(data){
         try{
             
-            const response = await fetch("http://localhost:5000/favMovies",{
+            const response = await fetch("https://assignment-10-server-kohl-seven.vercel.app/favMovies",{
                 method:"POST",
                 headers:{
                     "content-type":"application/json",
@@ -97,7 +97,7 @@ function CURDProvider({children}){
     //! Delete From Fav Movies 
     async function deleteFromFavMovies(ID){
         try{
-            const response = await fetch(`http://localhost:5000/favMovies/${ID}`,{
+            const response = await fetch(`https://assignment-10-server-kohl-seven.vercel.app/favMovies/${ID}`,{
                 method:"DELETE",
             });
             if(!response.ok){
@@ -119,7 +119,7 @@ function CURDProvider({children}){
     //!Add a New Movie 
     async function addProduct(data){
         try{
-            const response = await fetch('http://localhost:5000/movies',{
+            const response = await fetch('https://assignment-10-server-kohl-seven.vercel.app/movies',{
                 method:"POST",
                 headers:{
                     "content-type":"application/json"
@@ -142,7 +142,7 @@ function CURDProvider({children}){
     //! Delete Method from Movies
     async function deleteProduct(ID){
         try{
-            const response = await fetch(`http://localhost:5000/movies/${ID}`,{
+            const response = await fetch(`https://assignment-10-server-kohl-seven.vercel.app/movies/${ID}`,{
                 method:"DELETE"
             })
             if(response.ok){

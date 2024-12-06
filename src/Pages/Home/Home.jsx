@@ -14,7 +14,7 @@ function Home(){
     (
       async()=>{
         try{
-          const response = await fetch("http://localhost:5000/featMovies");
+          const response = await fetch("https://assignment-10-server-kohl-seven.vercel.app/featMovies");
           if(response.ok){
             const result = await response.json();
             setFeatMovies(result);
@@ -51,10 +51,10 @@ function Home(){
         }
       </section>
       }
-      <section>
+      <section className="my-40">
         <MoviePackages/>
       </section>
-      <section>
+      <section className="my-40">
         <HelpSection/>
       </section>
     </section>

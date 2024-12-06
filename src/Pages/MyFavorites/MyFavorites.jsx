@@ -35,11 +35,11 @@ function MyFavorites(){
             }
         </section>
         {
-          favMovies?.length || <section className="w-full text-center min-h-[20vh]">
+          !favMovies?.length ? <section className="w-full text-center min-h-[20vh]">
             <h1 className="text-red-500 font-semibold text-4xl my-7">Empty Page</h1>
             
             <Link to="/allMovies" className="active">Let's Add Movies</Link>
-          </section>
+          </section> : ""
         }
       </section>
     </>
