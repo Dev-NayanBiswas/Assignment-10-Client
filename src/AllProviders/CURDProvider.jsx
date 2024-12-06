@@ -6,7 +6,44 @@ function CURDProvider({children}){
 
 
     const [allData, setAllData]=useState([])
-    const [favMovies, setFavMovies]=useState([])
+    const [favMovies, setFavMovies]=useState([]);
+    const [spinner, setSpinner] = useState(true);
+
+    //! Favorite Movies Fetcher Function 
+    async function favMoviesFetcher(email){
+        try{
+            const response = await fetch(`http://localhost:5000/favMovies/${email}`);
+            if(!response.ok){
+                throw new Error(`Error happened in Loading Favorite Movies ${response.status}`)
+            }else{
+                const result = await response.json();
+                setSpinner(false);
+                setFavMovies(result)
+            }
+        }catch(error){
+            toastAlert("error",error.message)
+        }
+    }
+
+    //! All Movies Fetcher function 
+
+    async function allMoviesFetcher(query){
+        try{
+            const response = await fetch(`http://localhost:5000/${ query?`movies?searchQuery=${query}` :'movies'}`);
+            if(!response.ok){
+                throw new Error(`Error in loading All Movies ${response.status}`)
+            }else{
+                const result = await response.json();
+                setAllData(result);
+                setSpinner(false);
+            }
+        }catch(error){
+            toastAlert('error',error.message)
+        }
+
+    }
+
+
 
     //! PUT Method 
     async function updateOne(data, ID){
@@ -22,7 +59,9 @@ function CURDProvider({children}){
                 throw new Error(`Error in Updating Data Status : ${response.status}`)
             }else{
                 const result = await response.json();
-                toastAlert("success",`${data.title} has Updated`)
+                if(result.modifiedCount){
+                    toastAlert("success",`${data.title} has Updated`)
+                }
             }
         }catch(error){
             toastAlert("error",error.message)
@@ -44,9 +83,11 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Favorite Movie ${response.status}`)
             }else{
                 const result = await response.json();
-                console.log(result)
-                setFavMovies([...favMovies, data])
-                toastAlert("success",`${data.title} added to Favorite List`)
+                if(result.acknowledged){
+                    setFavMovies([...favMovies, data])
+                    toastAlert("success",`${data.title} added to Favorite List`)
+                }
+                
             }
         }catch(error){
             toastAlert("error", error.message)
@@ -63,9 +104,12 @@ function CURDProvider({children}){
                 throw new Error(`Error in Deleting Favorite Movie`)
             }else{
                 const result = await response.json();
-                const newFavMovies = favMovies.filter(movie=> movie._id !== ID);
-                setFavMovies(newFavMovies); 
-                toastAlert('success','Successfully Removed');
+                if(result.deletedCount){
+                    const newFavMovies = favMovies.filter(movie=> movie._id !== ID);
+                    setFavMovies(newFavMovies); 
+                    toastAlert('success','Successfully Removed');
+                }
+                
             }
         }catch(error){
             toastAlert("error",error.message)
@@ -86,6 +130,7 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Products status : ${response.status}`)
             }else{
                 const result =  await response.json();
+                console.log(result)
                 setAllData([...allData,data]);
                 toastAlert("success",`${data.title} added to Movies`)
             }
@@ -116,8 +161,10 @@ function CURDProvider({children}){
     }
 
     const CURDoperations ={
+        spinner,
+        allMoviesFetcher,
         favMovies,
-        setFavMovies,
+        favMoviesFetcher,
         allData,
         updateOne,
         setAllData,

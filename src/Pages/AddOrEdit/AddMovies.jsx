@@ -72,9 +72,8 @@ function AddMovies() {
           reset();
           return;
         }else{
-          addProduct(updateData);
           const newData = {...updateData,email:currentUserEmail};
-          addFavorite(newData)
+          addProduct(newData);
           reset();
           return;
         }

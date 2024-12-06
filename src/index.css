@@ -33,4 +33,7 @@
   .default_input{
     @apply bg-transparent border-b-[1px] border-defaultColor font-semibold w-full focus:outline-none placeholder:text-pink-200 pl-3 italic
   }
+  .searchInput{
+    @apply rounded-s-full rounded-e-full w-[300px] py-3 px-6 bg-transparent outline-none border-2 border-defaultColor focus:ring-0 text-lg placeholder:italic placeholder:text-defaultColor placeholder:font-semibold font-semibold text-defaultColor tracking-wide
+  }
 }

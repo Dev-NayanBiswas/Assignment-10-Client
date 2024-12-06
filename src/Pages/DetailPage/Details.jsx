@@ -16,12 +16,13 @@ import toastAlert from "../../Utilities/Scripts/toastAlert";
 
 function Details() {
     const [isFavorite, setIsFavorite] = useState(false)
-    const {addFavorite,favMovies, setFavMovies,deleteProduct} = useCURD()
+    const {favMovies,addFavorite, deleteProduct,favMoviesFetcher} = useCURD();
     const redirect = useNavigate();
     const {userData} = useAuth();
     const cardData = useLoaderData()
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const { ID } = useParams();
+  const email = userData?.email;
 
   useEffect(()=>{
     const favTitles = favMovies?.map(({title})=>title);
@@ -31,7 +32,7 @@ function Details() {
   },[cardData,favMovies])
 
   function handleMovies(){
-    const email = userData?.email;
+    
     const {_id,...remainingCardData} = cardData;
     const newData = {...remainingCardData, email:email};
     const titleArray = favMovies?.map(({title})=>title)
@@ -40,7 +41,7 @@ function Details() {
         return;
     }else{
             addFavorite(newData);
-            // setFavMovies([...favMovies, newData])
+            favMoviesFetcher(email)
     }
   }
 
@@ -98,8 +99,8 @@ function Details() {
                 <Rating value={rating} />
               </div>
               <section className="text-left flex gap-4">
-            <button onClick={handleMovies} className={`text-3xl text-gray-500 ${isFavorite? "pointer-events-none" : "cursor-pointer"}`}>
-              {isFavorite? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
+            <button onClick={handleMovies} className={`text-3xl text-gray-500 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
+              {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <Link to={`/production/${_id}`} className="text-3xl">
               <RiEdit2Line fill="gray" size={30} />
