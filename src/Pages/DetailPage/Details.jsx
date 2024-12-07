@@ -8,7 +8,6 @@ import {
   Link,
   useLoaderData,
   useNavigate,
-  useParams,
 } from "react-router-dom";
 import { useCURD } from "../../AllProviders/CURDProvider";
 import { useAuth } from "../../AllProviders/AuthProvider";
