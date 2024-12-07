@@ -13,35 +13,41 @@ import { useCURD } from "../../AllProviders/CURDProvider";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import { useEffect, useState } from "react";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
+import Spinner from "../../Components/Spinner/Spinner";
 
 function Details() {
     const [isFavorite, setIsFavorite] = useState(false)
-    const {favMovies,addFavorite, deleteProduct,favMoviesFetcher} = useCURD();
+    const {favMovies,addFavorite, deleteProduct,favMoviesFetcher, spinner} = useCURD();
     const redirect = useNavigate();
     const {userData} = useAuth();
     const cardData = useLoaderData()
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
-  const { ID } = useParams();
   const email = userData?.email;
 
-  useEffect(()=>{
-    const favTitles = favMovies?.map(({title})=>title);
-    if(favTitles.includes(title)){
-        setIsFavorite(true)
+  
+  useEffect(() => {
+    if (!favMovies.length) {
+      favMoviesFetcher(email);
     }
-  },[cardData,favMovies])
+    const favTitles = favMovies?.map(({ title }) => title);
+    if (favTitles.includes(title)) {
+      setIsFavorite(true);
+    }
+  }, [favMovies, title, email, favMoviesFetcher]);
 
-  function handleMovies(){
+  async function handleMovies(){
     
     const {_id,...remainingCardData} = cardData;
     const newData = {...remainingCardData, email:email};
     const titleArray = favMovies?.map(({title})=>title)
+
+
+
     if(titleArray.includes(newData.title)){
         toastAlert("error","Already existed in Favorite List");
         return;
     }else{
-            addFavorite(newData);
-            favMoviesFetcher(email)
+            await addFavorite(newData);
     }
   }
 
@@ -53,6 +59,9 @@ function Details() {
 
   return (
     <>
+    {
+      spinner ? <Spinner/> : ""
+    }
       {title ? (
         <section>
           <section className="flex justify-center items-center my-10 gap-4">
@@ -62,7 +71,7 @@ function Details() {
         </section>
           <section className=" my-8">
           <section className='relative flex lg:flex-row flex-col items-center justify-center lg:w-8/12 mx-auto'>
-            <section className='lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full z-50'>
+            <section className='lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full -z-50'>
               <img
                 className='object-cover md:w-full md:object-top h-full'
                 src={thumbnail}
@@ -99,7 +108,10 @@ function Details() {
                 <Rating value={rating} />
               </div>
               <section className="text-left flex gap-4">
-            <button onClick={handleMovies} className={`text-3xl text-gray-500 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
+            <button onClick={()=>{
+              setIsFavorite(true)
+              handleMovies();
+            }} className={`text-3xl text-gray-500 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
               {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <Link to={`/production/${_id}`} className="text-3xl">

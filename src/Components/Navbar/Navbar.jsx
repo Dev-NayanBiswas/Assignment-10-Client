@@ -82,7 +82,7 @@ function Navbar(){
             </button>
             <ul
               tabIndex={0}
-              className='menu dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow flex flex-col gap-4'>
+              className='menu bg-base-100 dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow flex flex-col gap-4'>
               {
                 paths.map(({path, name}, index)=>
                   <li key={index}>
