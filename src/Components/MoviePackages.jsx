@@ -1,4 +1,5 @@
 import { FaFilm } from "react-icons/fa";
+import {motion} from "motion/react";
 
 const subscriptionPlans = [
   {
@@ -33,10 +34,18 @@ function MoviePackages() {
         <p className="text-sm text-center lg:w-5/12 w-full mx-auto my-4">Flexible subscriptions offer exclusive features, affordable pricing, and enhanced user experience!</p>
       </article>
     <section className="flex flex-wrap justify-center gap-8 py-8">
-      {subscriptionPlans.map((plan, index) => (
-        <section
+      {
+      subscriptionPlans.map((plan, index) => (
+        <motion.section
+        whileHover={{
+          scale:1.1,
+          background:"#f8fff2",
+          transition:{
+            duration:0.5,
+          }
+        }}
           key={index}
-          className="w-80 p-6 rounded-xl shadow-lg flex flex-col items-center text-center"
+          className="w-80 p-6 rounded-xl shadow-lg flex flex-col items-center text-center cursor-pointer"
         >
           <section className="mb-4">{plan.icon}</section>
           <h3 className="text-2xl font-semibold mb-2">{plan.name}</h3>
@@ -51,7 +60,7 @@ function MoviePackages() {
           <button className="inActive hover:bg-defaultColor hover:text-white transition-all duration-300 my-10">
             Choose {plan.name}
           </button>
-        </section>
+        </motion.section>
       ))}
     </section>
     </>

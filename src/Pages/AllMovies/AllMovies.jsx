@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useCURD } from "../../AllProviders/CURDProvider"
 import Spinner from "../../Components/Spinner/Spinner";
 import MovieCard from "../../Components/MovieCard.jsx"
+import {motion} from "motion/react";
 
 function AllMovies(){
     const {allData, allMoviesFetcher, spinner} = useCURD();
@@ -21,7 +22,22 @@ function AllMovies(){
       <section className="flex lg:flex-row flex-col justify-center items-center mb-5 gap-4 my-20">
       <section className="flex-1">
       <section className="flex justify-center items-center mb-5 gap-4">
-        <div className="border-[1px] border-defaultColor flex-1 w-4/12"/>
+        <motion.div
+        initial={{
+          opacity:0,
+          x:'-100vw'
+        }}
+        animate={{
+          x:0,
+          opacity:1,
+          transition:{
+            duration:0.3,
+            delay:0.5
+          }
+        }}
+
+        viewport={{once:true}}
+         className="border-[1px] border-defaultColor flex-1 w-4/12"/>
         <h1 className="sectionHeading text-center">Movie Hub</h1>
         <div className="border-[1px] border-defaultColor flex-1 w-4/12"/>
         </section>
@@ -43,7 +59,7 @@ function AllMovies(){
       {
         spinner ? <Spinner/> : <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
           {
-            allData?.map((data)=><MovieCard key={data._id} itemData={data}/>)
+            allData?.map((data, index)=><MovieCard idx={index} key={data._id} itemData={data}/>)
           }
         </section>
       }

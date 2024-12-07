@@ -2,7 +2,7 @@ import {motion} from "motion/react";
 import { RiStarFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-function ProductCard({itemData}){
+function ProductCard({itemData, idx}){
     const {_id,title,thumbnail,genre,duration,release,rating} = itemData ||{}
 
 
@@ -17,12 +17,13 @@ function ProductCard({itemData}){
           y:0,
           opacity:1,
           transition:{
-            duration:0.2,
-            type:"spring",
-            damping:8
+            duration:0.5,
+            delay:idx/10,
+                type:"tween",
+                ease:"easeInOut"
           }
         }}
-        viewport={{once:false,margin:'40px'}}
+        viewport={{once:false,margin:'10px'}}
          className='cursor-pointer border-gray-50/10 border-[1px]  shadow-xl rounded-bl-xl rounded-br-xl'>
             
             <figure className="h-[650px] lg:h-[800px] w-full lg:p-4 overflow-hidden">
@@ -46,7 +47,7 @@ function ProductCard({itemData}){
                 Released on <span className="text-sky-400">{release}</span>
               </p>
               <div className='flex items-center space-x-1 mb-5'>
-                <Rating value={rating}/>
+                <span className="text-lg font-semibold mr-3">Rating</span> <Rating value={rating}/>
               </div>
               
             </figcaption>

@@ -1,3 +1,4 @@
+import {motion} from "motion/react"
 import { GoHeart } from "react-icons/go";
 import { GoHeartFill } from "react-icons/go";
 import { MdDeleteForever } from "react-icons/md";
@@ -71,16 +72,50 @@ function Details() {
         <h1 className="sectionHeading text-center">Movie Details</h1>
         <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         </section>
+
+
+
           <section className=" my-8">
           <section className='relative flex lg:flex-row flex-col items-center justify-center lg:w-8/12 mx-auto'>
-            <section className='lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full -z-50'>
+            <motion.section
+            initial={{
+              opacity:0,
+              x:'-100vw'
+            }}
+            animate={{
+              opacity:1,
+              x:0,
+              transition:{
+                duration:5,
+                type:"spring",
+                stiffness:20
+              }
+            }}
+             className='lg:h-[80vh] h-[80vh] md:h-[90vh] lg:w-10/12 w-full -z-50'>
               <img
                 className='object-cover md:w-full md:object-top h-full'
                 src={thumbnail}
                 alt=''
               />
-            </section>
-            <section className='lg:h-[80vh] md:h-[40vh] w-full space-y-4 lg:flex lg:flex-col lg:justify-center lg:ml-8 ml-0'>
+            </motion.section>
+
+
+
+            <motion.section
+            initial={{
+              opacity:0,
+              x:"100vw"
+            }}
+            animate={{
+              opacity:1,
+              x:0,
+              transition:{
+                duration:5,
+                type:"spring",
+                stiffness:20
+              }
+            }}
+             className='lg:h-[80vh] md:h-[40vh] w-full space-y-4 lg:flex lg:flex-col lg:justify-center lg:ml-8 ml-0'>
             <h3 className='text-5xl font-schi my-3 font-semibold text-left'>
             {title}
           </h3>
@@ -123,9 +158,11 @@ function Details() {
               <MdDeleteForever fill="#f3311685" size={30} />
             </button>
           </section>
-            </section>
+            </motion.section>
           </section>
           </section>
+
+
           <section className="text-center my-3">
             <Link to='/allMovies' className='inActive !py-2'>
               See All Movies <GiFilmSpool size={35} className="inline-block ml-4 relative -right-3 -scale-100 -rotate-90" />

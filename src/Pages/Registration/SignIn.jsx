@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {motion} from "motion/react"
 import SignInSVG from "../../Components/SVGComponents/SignInSVG"
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -31,7 +32,21 @@ function SignIn(){
     <>
         <section className="flex lg:flex-row flex-col-reverse">
         
-        <section className="flex-1 flex flex-col justify-center">
+        <motion.section
+        initial={{
+          opacity:0,
+          x:'-100vw'
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+         className="flex-1 flex flex-col justify-center">
           <form onSubmit={handleSubmit(handleSignIn)} 
           className="space-y-8" noValidate>
             <section className="flex justify-center items-center mb-5 gap-4">
@@ -91,10 +106,24 @@ function SignIn(){
             <GoogleLogin/>
           </section>
           </form>
-        </section>
-        <section className="flex-1">
+        </motion.section>
+        <motion.section
+        initial={{
+          opacity:0,
+          x:'100vw'
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+         className="flex-1">
             <SignInSVG/>
-        </section>
+        </motion.section>
         </section>
     </>
   )

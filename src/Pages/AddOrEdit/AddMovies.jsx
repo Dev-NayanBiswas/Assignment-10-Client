@@ -1,4 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
+import {motion} from "motion/react";
 import { MultiSelect } from "react-multi-select-component";
 import { imageUploader } from "../../Utilities/Scripts/imageUploader";
 import ReactStars from "react-rating-stars-component";
@@ -7,7 +8,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { useAuth } from "../../AllProviders/AuthProvider";
 
 function AddMovies() {
-  const { addProduct, updateOne, addFavorite } = useCURD();
+  const { addProduct, updateOne} = useCURD();
   const { userData } = useAuth();
   const { ID } = useParams();
   const data = useLoaderData();
@@ -114,14 +115,42 @@ function AddMovies() {
             ? "flex lg:flex-row-reverse flex-col"
             : "flex lg:flex-row flex-col"
         }>
-        <figure className='h-[60vh] w-full aspect-square flex-1'>
+        <motion.figure
+        initial={{
+          opacity:0,
+          x:'-100vw'
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+         className='h-[60vh] w-full aspect-square flex-1'>
           <img
             className='h-full w-full object-contain'
             src={imageUploader(isEdit ? "UpdateMovie.svg" : "EditMovies.svg")}
             alt=''
           />
-        </figure>
-        <form
+        </motion.figure>
+
+        <motion.form
+        initial={{
+          opacity:0,
+          x:"100vw"
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
           onSubmit={handleSubmit(formHandler)}
           className='px-3 flex-1'
           noValidate>
@@ -323,7 +352,7 @@ function AddMovies() {
               {isEdit ? "Update Movie" : "Add Movie"}
             </button>
           </section>
-        </form>
+        </motion.form>
       </section>
     </>
   );

@@ -1,12 +1,28 @@
 import { MdDeleteForever } from "react-icons/md";
 import { RiStarFill } from "react-icons/ri";
+import {motion} from "motion/react";
 
-function FavCard({cardData, onDelete}){
+function FavCard({cardData, onDelete, index}){
     const {_id, title, thumbnail, summary, release, rating, genre, duration, isFavorite } = cardData || {};
   return (
     <>
         
-            <section className="w-full h-[40vh] flex rounded-lg" >
+            <motion.section
+            initial={{
+              y:'50vh',
+              opacity:0
+            }}
+            animate={{
+              y:0,
+              opacity:1,
+              transition:{
+                delay:index/2,
+                type:"spring",
+                damping:20,
+                duration:0.5
+              }
+            }}
+             className="w-full h-[40vh] flex rounded-lg" >
                 <section className="flex-1 w-1/2 h-[40vh] rounded-s-lg">
                     <img src={thumbnail} alt="" className="h-full w-full object-top object-cover rounded-s-lg" />
                 </section>
@@ -22,7 +38,7 @@ function FavCard({cardData, onDelete}){
                 </section>
                 <button onClick={()=>onDelete(_id)} className="inActive self-start ml-4 flex items-center gap-3">Delete <MdDeleteForever/></button>
                 </section>
-            </section>
+            </motion.section>
 
     </>
   )

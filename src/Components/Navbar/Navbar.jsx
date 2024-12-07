@@ -60,6 +60,19 @@ function Navbar(){
           {
             paths.map(({path,name}, index)=>
             <motion.button
+            initial={{
+              opacity:0,
+              y:"-40vh"
+            }}
+            animate={{
+              opacity:1,
+              y:0,
+              transition:{
+                duration:1,
+                type:"spring",
+                delay:index/5
+              }
+            }}
             whileHover={{
               scale:1.1,
             }}

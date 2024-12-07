@@ -1,6 +1,8 @@
-import FAQsvg from "../../Components/SVGComponents/FAQsvg"
+import FAQsvg from "../../Components/SVGComponents/FAQsvg";
+import {motion, useScroll} from "motion/react";
 
 function FAQ(){
+  const {scrollYProgress} = useScroll()
     const faq = [
         {
           question: "What services does the movie portal offer ?",
@@ -30,19 +32,64 @@ function FAQ(){
       
   return (
     <section className="flex flex-col justify-center h-full my-10">
-        <article>
+        <article
+        initial={{
+          opacity:0,
+          x:'-100vw'
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+        >
         <section className="flex justify-center items-center mb-5 gap-4">
-        <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+        <div
+         className="border-b-[1px] border-defaultColor flex-1 w-4/12 origin-right"/>
         <h1 className="sectionHeading text-center">FAQ</h1>
         <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         </section>
         <p className="text-sm text-center lg:w-5/12 w-full mx-auto my-4">People always asked about their queries, You might have something common in them or for better consultancy talk to our expert one</p>
       </article>
-      <section className="flex lg:flex-row flex-col justify-center gap-4">
-        <section className="lg:w-5/12 w-full">
+      <motion.section
+      
+       className="flex lg:flex-row flex-col justify-center gap-4">
+        <motion.section
+        initial={{
+          opacity:0,
+          x:"-100vw"
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+         className="lg:w-5/12 w-full">
         <FAQsvg/>
-        </section>
-      <section className=" flex flex-col gap-5">
+        </motion.section>
+      <motion.section
+      initial={{
+        opacity:0,
+        x:"100vw"
+      }}
+      animate={{
+        opacity:1,
+        x:0,
+        transition:{
+          duration:5,
+          type:"spring",
+          stiffness:20
+        }
+      }}
+       className=" flex flex-col gap-5">
         {
             faq.map(({question, answer}, index)=>
                 <section key={index} className='collapse collapse-plus shadow-lg'>
@@ -56,8 +103,8 @@ function FAQ(){
         </section>
             )
         }
-      </section>
-      </section>
+      </motion.section>
+      </motion.section>
     </section>
   );
 }

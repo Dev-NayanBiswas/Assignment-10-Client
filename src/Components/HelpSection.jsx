@@ -1,10 +1,14 @@
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaRegHandshake } from "react-icons/fa";
-import HelpSVG from "../Components/SVGComponents/HelpSVG"
+import HelpSVG from "../Components/SVGComponents/HelpSVG";
+import {motion} from "motion/react";
+
 
 function HelpSection() {
     return (
         <>
-        <article className="mt-7">
+        <article
+        className="mt-7"
+        >
         <section className="flex justify-center items-center mb-5 gap-4">
         <section className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         <h1 className="sectionHeading text-center">Need Help ?</h1>
@@ -45,9 +49,19 @@ function HelpSection() {
                     </section>
                 </section>
 
-                <button className="active my-7 md:ml-5 ml-0">
+                <motion.button
+                whileHover={{
+                    scale:1.2,
+                    transition:{
+                        type:"spring",
+                        duration:0.1,
+                        damping:10
+                    }
+                }}
+                
+                 className="active !mt-7">
                     Call Now
-                </button>
+                </motion.button>
             </section>
         </section>
         </>

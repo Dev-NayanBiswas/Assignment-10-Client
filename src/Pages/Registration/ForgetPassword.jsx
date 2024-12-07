@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import {motion} from "motion/react"
 import ResetSVG from "../../Components/SVGComponents/ResetSVG"
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../AllProviders/AuthProvider";
@@ -24,7 +25,21 @@ function ForgetPassword(){
     <>
         <section className="flex lg:flex-row flex-col-reverse">
         
-        <section className="flex-1 flex flex-col justify-center">
+        <motion.section
+        initial={{
+          opacity:0,
+          x:'-100vw'
+        }}
+        animate={{
+          opacity:1,
+          x:0,
+          transition:{
+            duration:5,
+            type:"spring",
+            stiffness:20
+          }
+        }}
+         className="flex-1 flex flex-col justify-center">
           <form onSubmit={handleSubmit(handleReset)} 
           className="space-y-8" noValidate>
             <section className="flex justify-center items-center mb-5 gap-4">
@@ -55,13 +70,29 @@ function ForgetPassword(){
             <p className="text-lg font-semibold text-sky-500">You will be direct to your Gmail</p>
           </section>
           <section>
-            <button type="submit" className="inActive">Reset Password</button>
+            <button
+            
+             type="submit" className="active">Reset Password</button>
           </section>
           </form>
-        </section>
-        <section className="flex-1">
+        </motion.section>
+        <motion.section
+          initial={{
+            opacity:0,
+            x:"100vw"
+          }}
+          animate={{
+            opacity:1,
+            x:0,
+            transition:{
+              duration:5,
+              type:"spring",
+              stiffness:20
+            }
+          }}
+         className="flex-1">
             <ResetSVG/>
-        </section>
+        </motion.section>
         </section>
     </>
   )
