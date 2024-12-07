@@ -1,3 +1,4 @@
+import {motion} from "motion/react"
 import { useEffect, useState } from "react";
 import Banner from "../../Components/Banner/Banner.jsx";
 import HelpSection from "../../Components/HelpSection.jsx";
@@ -38,7 +39,8 @@ function Home(){
     <section className="my-10">
       <article>
         <section className="flex justify-center items-center mb-5 gap-4">
-        <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+        <div
+         className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         <h1 className="sectionHeading text-center">Featured Movies</h1>
         <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         </section>
@@ -52,12 +54,40 @@ function Home(){
         }
       </section>
       }
-      <section className="my-40">
+      <motion.section
+      initial={{
+        opacity:0,
+        y:200
+      }}
+      whileInView={{
+        transition:{
+          duration:0.5,
+          type:'spring',
+          damping:10
+        },
+        opacity:1,
+        y:0
+      }}
+       className="my-40">
         <MoviePackages/>
-      </section>
-      <section className="my-40">
+      </motion.section>
+      <motion.section
+        initial={{
+          opacity:0,
+          y:200
+        }}
+        whileInView={{
+          transition:{
+            duration:1,
+            type:'spring',
+            damping:10
+          },
+          opacity:1,
+          y:0
+        }}
+       className="my-40">
         <HelpSection/>
-      </section>
+      </motion.section>
     </section>
     </>
   )

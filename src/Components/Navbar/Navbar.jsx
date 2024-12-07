@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
 import LogoSVG from "../SVGComponents/LogoSVG";
@@ -22,18 +23,55 @@ function Navbar(){
       <nav className='navbar min-h-20'>
         <nav className='navbar-start flex-1 flex items-center justify-start'>
           <LogoSVG/>
-          <h1 className="font-logo text-4xl text-defaultColor font-semibold tracking-wide">ReelEra
+          <motion.h1
+          initial={{x:-100, opacity:0}} 
+          animate={{
+            x:0, 
+            opacity:1,
+            transition:{
+              delay:0.5,
+              duration:1.5,
+              type:"spring",
+              bounce:0.5
+            }
+           }}
+          className="font-logo text-4xl text-defaultColor font-semibold tracking-wide">ReelEra
             <small className="text-xs font-space text-pink-300 italic tracking-tight font-thin md:block hidden">one stop for all Movies</small>
-          </h1>
+          </motion.h1>
         </nav>
 
 
 
-        <nav className='navbar-center flex-1 justify-center items-center lg:flex gap-3 hidden'>
+        <motion.nav
+          initial={{
+            y:-180,
+            opacity:0.2
+          }}
+
+          animate={{
+            y:0,
+            opacity:1,
+            transition:{
+              type:"spring",
+              stiffness:80
+            }
+          }}
+         className='navbar-center flex-1 justify-center items-center lg:flex lg:gap-4 md:gap-2 hidden'>
           {
-            paths.map(({path,name}, index)=><NavLink key={index} to={path} className={({isActive})=>isActive? "active": "inActive"}>{name}</NavLink>)
+            paths.map(({path,name}, index)=>
+            <motion.button
+            whileHover={{
+              scale:1.1,
+            }}
+            whileTap={{
+              rotate:3,
+              scale:0.98
+            }} 
+            key={index}>
+              <NavLink to={path} className={({isActive})=>isActive? "active": "inActive"}>{name}</NavLink>
+            </motion.button>)
           }
-        </nav>
+        </motion.nav>
 
 
 
@@ -85,9 +123,14 @@ function Navbar(){
               className='menu bg-base-100 dropdown-content rounded-box z-[1] mt-4 w-52 p-2 shadow flex flex-col gap-4'>
               {
                 paths.map(({path, name}, index)=>
-                  <li key={index}>
+                  <motion.li
+                whileTap={{
+                  rotate:2,
+                  scale:0.98
+                }} 
+                   key={index}>
               <NavLink  to={path} className={({isActive})=>isActive? "active": "inActive"}>{name}</NavLink>
-              </li>
+              </motion.li>
                 )
               }
               {

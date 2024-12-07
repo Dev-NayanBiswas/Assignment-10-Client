@@ -3,9 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {imageUploader} from "../../Utilities/Scripts/imageUploader.js";
 import { useEffect, useState } from "react";
+import { motion} from "motion/react";
 
 function Banner(){
     const [carouselCards, setCarouselCards] = useState(3)
+
     const data = [
         "kingdom.jpg", "aquaman.jpg","avengers.jpg","everything.jpg","godzillakong.jpg",
         "inception.jpg","johnwick.jpg","joker.jpg","madmax.jpg","moana.jpg","wild.jpg","starwars.jpg","suicide.jpg","venom.jpg","wednesday.jpg","gladiator.jpg"
@@ -34,9 +36,17 @@ function Banner(){
     <>
         <section className="slider-container my-[20vh]">
             <section className="flex justify-center items-center mb-5 gap-4">
-            <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+            <motion.div
+             className="border-b-[1px] border-defaultColor flex-1 w-4/12 origin-right"/>
+
+
             <h1 className="sectionHeading">New Released</h1>
-            <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+
+
+            <div
+             className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
+
+
             </section>
             <section>
                 <p className="lg:w-8/12 md:w-10/12 w-full px-3 mx-auto text-center my-6">

@@ -16,10 +16,10 @@
     @apply text-5xl font-logo text-defaultColor font-bold
   }
   .defaultStyle{
-    @apply px-7 py-1 rounded-e-full rounded-s-full border-[2px] border-defaultColor text-xl font-semibold whitespace-nowrap
+    @apply px-7 py-1 transition-all duration-200 rounded-e-full rounded-s-full border-[2px] border-defaultColor text-xl font-semibold whitespace-nowrap
   }
   .active{
-    @apply bg-defaultColor text-white defaultStyle 
+    @apply bg-defaultColor text-white defaultStyle
   }
   .inActive{
     @apply   text-defaultColor defaultStyle

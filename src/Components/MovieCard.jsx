@@ -1,3 +1,4 @@
+import {motion} from "motion/react";
 import { RiStarFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
@@ -7,10 +8,33 @@ function ProductCard({itemData}){
 
   return (
     <>
-        <figure className='cursor-pointer border-gray-50/10 border-[1px]  shadow-xl rounded-bl-xl rounded-br-xl'>
+        <motion.figure
+        initial={{
+          y:100,
+          opacity:0
+        }}
+        whileInView={{
+          y:0,
+          opacity:1,
+          transition:{
+            duration:0.2,
+            type:"spring",
+            damping:8
+          }
+        }}
+        viewport={{once:false,margin:'40px'}}
+         className='cursor-pointer border-gray-50/10 border-[1px]  shadow-xl rounded-bl-xl rounded-br-xl'>
             
-            <figure className="h-[650px] lg:h-[800px] w-full lg:p-4">
-            <img className="w-full h-full lg:object-contain object-cover" src={thumbnail} alt='' />
+            <figure className="h-[650px] lg:h-[800px] w-full lg:p-4 overflow-hidden">
+            <motion.img
+            whileHover={{
+              scale:1.1,
+              rotate:1,
+              transition:{
+                duration:0.3,
+              }
+            }}
+             className="w-full h-full lg:object-contain object-cover" src={thumbnail} alt='' />
             </figure>
             <figcaption className='px-7 py-5 space-y-3'>
               <h3 className='text-2xl my-3 font-semibold'>{title}</h3>
@@ -27,10 +51,23 @@ function ProductCard({itemData}){
               
             </figcaption>
             <section className="px-7 py-5">
-              <Link to={`/details/${_id}`} className="inActive">See Details</Link>
+              <motion.button
+              whileHover={{
+                scale:1.1,
+                transition:{
+                  duration:0.3
+                }
+              }}
+              whileTap={{
+                scale:0.95,
+                transition:{
+                  type:"bounce"
+                }
+              }}
+              ><Link to={`/details/${_id}`} className="inActive">See Details</Link></motion.button>
             </section>
             
-          </figure>
+          </motion.figure>
     </>
   )
 }
