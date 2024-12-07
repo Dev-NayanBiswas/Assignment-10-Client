@@ -24,6 +24,8 @@ function Details() {
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const email = userData?.email;
 
+
+  
   
   useEffect(() => {
     if (!favMovies.length) {
