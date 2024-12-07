@@ -5,6 +5,7 @@ import MoviePackages from "../../Components/MoviePackages.jsx";
 import toastAlert from "../../Utilities/Scripts/toastAlert.js";
 import Spinner from "../../Components/Spinner/Spinner.jsx";
 import MovieCard from "../../Components/MovieCard.jsx"
+import logo from "../../assets/iconLogo.svg"
 
 function Home(){
   const [loading, setLoading] = useState(true);

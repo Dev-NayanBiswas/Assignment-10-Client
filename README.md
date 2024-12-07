@@ -1,48 +1,37 @@
-https://assignment-10-server-kohl-seven.vercel.app/
-
-
 <p>
-    <a>
-    <h1 align="center">TrailBliss</h1>
-    <p align="center">Let's bring yourself close to Nature</p>
-    </a>
+<a>
+<h1 align="center">ReelEra</h1>
+<p align="center">one stop for All movies</p>
+</a>
 </p>
 
+***
 
 
+#### *Intro*
+*Basically it's an online portal for movie lovers, movie freak can upload movies of their personal interest. Our goal is to make it an open source for them who love to add movies in their watchList and can get the updates about new upcoming movies and can buy tickets online...*
+#### *Key Features*
+*Its an open source for all kind of people who love to watch and share their zone of interest with others, all they need to do just login or Sign up*
+- *On first landing page their is a carousel of new released and upcoming movie posters, then our top rated movies based on our users ratings. A subscription package section for our premium users who will like to get every single updates about new movies.Our contact details and a social section where user can join our Gang in social sites*
+*On add Movie page user can add movies what ever he likes most cause we do believe in sharing so it's open for all to contribute*
+- *All movies section is a free zone where any user can visit. without login he won't be able to go further long*
+- *Registration process of ours is so simple, All you need to do create an user on signUp page and you are good to go. If you don't like to be bother by login process then google signUp would be the best. Existed user can login and can set password if they fail to login with existed credentials **(Note:password should be 8characters long and must have a special character, one uppercase and lowercase letters)***
+- *Only logged in user can add Movies on add movies section he/she need to go through our general criteria, No reel or short movies are allowed*
+- *Details page with come up with details of selected movie, where user can edit or delete movies or can save them as their Favorite one*
+- *If user think these information of details page is not proper so he can update the details as well by clicking on pen icons will give him the access of detail page*
+- *User can't choose one movies again n again it well turn red whenever they add that particular movie on their favorite list*
+- *On My Favorite page user can have a look of his favlisted movies, as well as can delete their already watched movies by clicking on remove button*
+- *We got an FAQ section for those users who like to know more about us and to serve their little queries without spending a single word*
 
-
-
-
-
-
-
-serverPrivate: git remote add serverPrivate https://github.com/Dev-NayanBiswas/Assignment-10-Server.git
-serverClassroom: https://github.com/programming-hero-web-course2/b10-a10-server-side-Dev-NayanBiswas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Client Side=> https://classroom.github.com/a/FtNcpX4N
-
-Server Side=> https://classroom.github.com/a/4UN8ugSF
-
-clientPrivate: git remote add clientPrivate https://github.com/Dev-NayanBiswas/Assignment-10-Client.git
-clientClassroom: git remote add clientClassroom https://github.com/programming-hero-web-course2/b10-a10-client-side-Dev-NayanBiswas.git
-
-
-
-
+##### *Web Dev Zone*
+This simple single page website was created with-
+- TailwindCss
+- Javascript
+- React Vite
+- React Router Dom
+- Express js
+- Node js
+- MongoDB 
 
 
 <p>
@@ -79,9 +68,23 @@ class id2,id4,id6,id8,id10,id12,id14,id16,id54 routeStyle
 class id1,id5,id7,id9,id11,id13,id15,id17,id19,id55,id40,id41,id42,id43,id18 componentStyle
 
 ```
-
+***
 
 
 
 [_Feel Free to Visit **ReelEra**_](https://reeleraassignment10.netlify.app/)
 [_Server Site_](https://assignment-10-server-kohl-seven.vercel.app/)
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<img align="center" src="./src/assets/iconLogo.svg" alt="" />
+
+### Thank You
