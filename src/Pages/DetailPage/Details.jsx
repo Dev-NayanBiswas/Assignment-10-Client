@@ -3,6 +3,7 @@ import { GoHeartFill } from "react-icons/go";
 import { MdDeleteForever } from "react-icons/md";
 import { RiStarFill } from "react-icons/ri";
 import { RiEdit2Line } from "react-icons/ri";
+import { GiFilmSpool } from "react-icons/gi";
 import {
   Link,
   useLoaderData,
@@ -117,7 +118,7 @@ function Details() {
               {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
             </button>
             <Link to={`/production/${_id}`} className="text-3xl">
-              <RiEdit2Line fill="gray" size={30} />
+              <RiEdit2Line className="text-sky-500" size={30} />
             </Link>
             <button onClick={()=>handleDelete(_id)} className="text-3xl">
               <MdDeleteForever fill="#f3311685" size={30} />
@@ -128,7 +129,7 @@ function Details() {
           </section>
           <section className="text-center my-3">
             <Link to='/allMovies' className='inActive !py-2'>
-              See All Movies
+              See All Movies <GiFilmSpool size={35} className="inline-block ml-4 relative -right-3 -scale-100 -rotate-90" />
             </Link>
           </section>
         </section>
@@ -142,7 +143,7 @@ function Details() {
               Go Home
             </Link>
             <Link className='inActive !rounded-s-none' to='/allMovies'>
-              All Movies
+              All Movies <GiFilmSpool />
             </Link>
           </section>
         </section>
