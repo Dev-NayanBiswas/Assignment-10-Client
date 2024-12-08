@@ -35,7 +35,7 @@ function Navbar(){
               bounce:0.5
             }
            }}
-          className="font-logo text-4xl text-defaultColor font-semibold tracking-wide">ReelEra
+          className="font-logo md:text-4xl text-4xl text-defaultColor font-semibold tracking-wide">ReelEra
             <small className="text-xs font-space text-pink-300 italic tracking-tight font-thin md:block hidden">one stop for all Movies</small>
           </motion.h1>
         </nav>

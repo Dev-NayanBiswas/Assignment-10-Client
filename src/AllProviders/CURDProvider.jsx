@@ -130,7 +130,6 @@ function CURDProvider({children}){
                 throw new Error(`Error in adding Products status : ${response.status}`)
             }else{
                 const result =  await response.json();
-                console.log(result)
                 setAllData([...allData,data]);
                 toastAlert("success",`${data.title} added to Movies`)
             }
