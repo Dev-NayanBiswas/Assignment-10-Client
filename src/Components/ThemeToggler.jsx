@@ -3,10 +3,10 @@ import { AiFillSun } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 
 function ThemeToggler() {
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "lemonade");
 
     const toggleTheme = () => {
-        const newTheme = theme === "light" ? "dark" : "light";
+        const newTheme = theme === "lemonade" ? "dark" : "lemonade";
         setTheme(newTheme);
         localStorage.setItem("theme", newTheme);
     };
@@ -21,7 +21,7 @@ function ThemeToggler() {
                 className="p-2 mx-2"
                 onClick={toggleTheme}
             >
-                {theme === "light" ? <FaMoon className="text-sky-300 animate-bounce" size={25} /> : <AiFillSun fill="gold" size={25}/>}
+                {theme === "lemonade" ? <FaMoon className="text-sky-300 animate-bounce" size={25} /> : <AiFillSun fill="gold" size={25}/>}
             </button>
         </div>
     );

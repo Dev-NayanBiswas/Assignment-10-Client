@@ -10,7 +10,7 @@ function MainLayout(){
 
   return (
     <>
-        <section className="w-11/12 mx-auto">
+        <section className="w-11/12 mx-auto overflow-x-hidden overflow-y-hidden">
         <motion.div
         style={{
           scaleX:springEffect,

@@ -26,6 +26,7 @@
 ##### *Web Dev Zone*
 This simple single page website was created with-
 - TailwindCss
+- Framer Motion
 - Javascript
 - React Vite
 - React Router Dom
@@ -67,6 +68,76 @@ id2 --> id14([Error]) --> id15([ErrorPage])
 class id2,id4,id6,id8,id10,id12,id14,id16,id54 routeStyle
 class id1,id5,id7,id9,id11,id13,id15,id17,id19,id55,id40,id41,id42,id43,id18 componentStyle
 
+```
+
+
+***
+<p>
+    <a>
+    <h4 align="center">Server</h4>
+    <p align="center">Simple File & Folder map</p>
+    </a>
+</p>
+
+
+```mermaid
+stateDiagram-v2
+classDef controller fill: ,color:green,font-weight:bold,stroke-width:0px;
+classDef main fill: #fafafc ,color:green,font-weight:bold,stroke-width:0px;
+
+classDef config fill:#fafafc,color:green,font-weight:bold,stroke-width:0px;
+
+classDef function fill:#4b4c4f,font-weight:bold,font-size:16px,stroke-width:0px, color: #dcdee4 ;
+
+classDef root fill:#b2dcea ,font-weight:bold,font-size:24px,stroke-width:0px, color: #60606a, font-style:italic;
+
+
+favMoviesController --> index.js
+globalErrorControl --> index.js 
+productController --> index.js 
+dataBase --> index.js 
+
+index.js ::: root
+favMoviesController ::: config
+productController ::: config
+globalErrorControl ::: config
+Config ::: config
+Controllers ::: main
+dataBase ::: config
+
+getAllMovies ::: function
+updateAMovie ::: function
+addANewMovie ::: function
+deleteAMovie ::: function
+getMovieByID ::: function
+getTopRatedMovies ::: function
+addFavoriteMovie ::: function
+deleteFavoriteMovie ::: function
+getAllFavoriteMovies ::: function
+globalError ::: function
+MongoDB ::: function
+
+    state Config {
+        state dataBase {
+            MongoDB 
+        }
+    }
+    state Controllers {
+        state favMoviesController {
+            addFavoriteMovie-->deleteFavoriteMovie
+            deleteFavoriteMovie-->getAllFavoriteMovies
+        }
+        state globalErrorControl {
+            globalError
+        }
+        state productController {
+            getAllMovies --> updateAMovie
+            updateAMovie --> addANewMovie
+            addANewMovie --> deleteAMovie
+            deleteAMovie --> getMovieByID
+            getMovieByID --> getTopRatedMovies
+        }
+    }
 ```
 ***
 

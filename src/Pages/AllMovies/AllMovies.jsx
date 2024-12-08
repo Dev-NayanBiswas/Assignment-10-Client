@@ -37,14 +37,26 @@ function AllMovies(){
         }}
 
         viewport={{once:true}}
-         className="border-[1px] border-defaultColor flex-1 w-4/12"/>
+         className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         <h1 className="sectionHeading text-center">Movie Hub</h1>
-        <div className="border-[1px] border-defaultColor flex-1 w-4/12"/>
+        <div className="border-b-[1px] border-defaultColor flex-1 w-4/12"/>
         </section>
         <p className="lg:w-9/12 w-full px-3 text-center mx-auto">Movies Hub is a community-driven platform where movie enthusiasts can explore, share, and contribute their favorite films. It serves as an open-source haven for film lovers, offering a diverse collection of movies curated by people from all walks of life. Whether you're searching for hidden gems or sharing your own recommendations</p>
       </section>
         <section className="flex items-start justify-center relative lg:-top-9 ">
-          <input 
+          <motion.input
+          initial={{
+            x:"100vw",
+            opacity:0
+          }}
+          animate={{
+            x:0, opacity:1, transition:{
+              delay:1,
+              duration:1,
+              type:"spring",
+              damping:15
+            }
+          }} 
           type="search" 
           name="search" 
           id="search" 
