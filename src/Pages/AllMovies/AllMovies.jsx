@@ -5,10 +5,12 @@ import Spinner from "../../Components/Spinner/Spinner";
 import MovieCard from "../../Components/MovieCard.jsx"
 import {motion} from "motion/react";
 import { Link } from "react-router-dom";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle.js";
 
 function AllMovies(){
     const {allData, allMoviesFetcher, spinner} = useCURD();
     const [userQuery, setUserQuery] = useState(null);
+    dynamicTitle("All Movies")
 
     useEffect(()=>{
       if(userQuery){

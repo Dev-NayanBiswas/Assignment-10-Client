@@ -1,8 +1,10 @@
 import { Link, useNavigate, useRouteError } from "react-router-dom";
 import LostSVG from "../../Components/SVGComponents/LostSVG"
 import {motion} from "motion/react"
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function ErrorPage(){
+  dynamicTitle("Not Found")
   const navigate = useNavigate()
     const error = useRouteError();
   return (

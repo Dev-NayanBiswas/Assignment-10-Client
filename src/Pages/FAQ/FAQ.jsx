@@ -1,7 +1,9 @@
 import FAQsvg from "../../Components/SVGComponents/FAQsvg";
 import {motion} from "motion/react";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function FAQ(){
+  dynamicTitle("FAQ")
     const faq = [
         {
           question: "What services does the movie portal offer ?",

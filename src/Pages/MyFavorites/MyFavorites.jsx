@@ -4,9 +4,11 @@ import FavCard from "../../Components/FavCard";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 
 function MyFavorites(){
+  dynamicTitle("My Favorites")
   const {favMoviesFetcher,favMovies,deleteFromFavMovies} = useCURD();
   const {userData} = useAuth();
   

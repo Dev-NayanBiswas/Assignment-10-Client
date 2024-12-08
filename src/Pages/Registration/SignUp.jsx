@@ -8,8 +8,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function SignUp(){
+  dynamicTitle("Sign Up")
   const location = useLocation();
   const redirect = useNavigate();
   const [showPass, setShowPass] = useState(true);

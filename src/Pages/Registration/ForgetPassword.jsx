@@ -4,11 +4,13 @@ import ResetSVG from "../../Components/SVGComponents/ResetSVG"
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../AllProviders/AuthProvider";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function ForgetPassword(){
     const {resetPasswordEmail} = useAuth();
     const {email} = useParams();
   const {register, handleSubmit, formState:{errors}, reset} = useForm({defaultValues:{email:email || " "}});
+  dynamicTitle("Reset Password")
 
 
   function handleReset(data){

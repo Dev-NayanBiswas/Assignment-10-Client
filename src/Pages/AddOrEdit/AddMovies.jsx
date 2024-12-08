@@ -6,6 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import { useCURD } from "../../AllProviders/CURDProvider";
 import { useLoaderData, useParams } from "react-router-dom";
 import { useAuth } from "../../AllProviders/AuthProvider";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function AddMovies() {
   const { addProduct, updateOne} = useCURD();
@@ -15,6 +16,8 @@ function AddMovies() {
   const currentUserEmail = userData?.email;
 
   const isEdit = !!(ID && data);
+
+  dynamicTitle(`${isEdit? "Update Movie" : "Add Movie" }`)
 
   //! Initialize react-hook-form
   const {

@@ -15,15 +15,17 @@ import { useAuth } from "../../AllProviders/AuthProvider";
 import { useEffect, useState } from "react";
 import toastAlert from "../../Utilities/Scripts/toastAlert";
 import Spinner from "../../Components/Spinner/Spinner";
+import dynamicTitle from "../../Utilities/Scripts/dynamicTitle";
 
 function Details() {
-    const [isFavorite, setIsFavorite] = useState(false)
-    const {favMovies,addFavorite, deleteProduct,favMoviesFetcher, spinner} = useCURD();
-    const redirect = useNavigate();
-    const {userData} = useAuth();
-    const cardData = useLoaderData()
+  const [isFavorite, setIsFavorite] = useState(false)
+  const {favMovies,addFavorite, deleteProduct,favMoviesFetcher, spinner} = useCURD();
+  const redirect = useNavigate();
+  const {userData} = useAuth();
+  const cardData = useLoaderData()
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const email = userData?.email;
+  dynamicTitle(title)
 
   const btnVariant={
     hover:{
