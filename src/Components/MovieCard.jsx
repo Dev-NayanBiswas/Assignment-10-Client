@@ -39,7 +39,7 @@ function ProductCard({itemData, idx}){
             </figure>
             <figcaption className='px-7 py-5 space-y-3'>
               <h3 className='text-2xl my-3 font-semibold'>{title}</h3>
-              <p className="text-lg font-semibold space-x-3">Genre {genre.map((type, index)=><span className="px-2 text-sm uppercase py-1 bg-slate-200 rounded-sm font-semibold" key={index}>{type}</span>)}</p>
+              <p className="text-lg font-semibold space-x-3">Genre {genre.map((type, index)=><span className="px-2 text-sm uppercase py-1 bg-defaultColor/20 rounded-md font-semibold" key={index}>{type}</span>)}</p>
               <p className='text-lg font-semibold'>
                 Duration <span className="text-sky-400">{Math.round(duration/60)}</span> Hrs <span className="text-sky-400">{duration%60}</span> Min
               </p>

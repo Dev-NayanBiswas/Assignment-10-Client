@@ -26,7 +26,7 @@ function MyFavorites(){
       <section>
       <section className="flex justify-center items-center mb-5 gap-4 my-[20vh]">
         <motion.div
-        initial={{opacity:0, x:'-100vw'}}
+        initial={{opacity:0, x:'-50vw'}}
         animate={{x:0, opacity:1, transition:{
           duration:1,
           type:"spring",
