@@ -9,6 +9,8 @@
 
 
 #### *Intro*
+
+
 *Basically it's an online portal for movie lovers, movie freak can upload movies of their personal interest. Our goal is to make it an open source for them who love to add movies in their watchList and can get the updates about new upcoming movies and can buy tickets online...*
 #### *Key Features*
 *Its an open source for all kind of people who love to watch and share their zone of interest with others, all they need to do just login or Sign up*
@@ -22,6 +24,8 @@
 - *User can't choose one movies again n again it well turn red whenever they add that particular movie on their favorite list*
 - *On My Favorite page user can have a look of his favlisted movies, as well as can delete their already watched movies by clicking on remove button*
 - *We got an FAQ section for those users who like to know more about us and to serve their little queries without spending a single word*
+
+<img align="center" src="./src/assets/iconLogo.svg" alt="" />
 
 ##### *Web Dev Zone*
 This simple single page website was created with-
@@ -142,9 +146,18 @@ MongoDB ::: function
 ***
 
 
+##### *Errors and Challenges*
+- *As criteria I took challenge to apply react-hook-form for all input fields except search bar. Here I learn few new functionalities like how to handle error, crating setError manually, register input fields and handling errors with formState:{errors}, clear manual Errors, reset input fields, watch specific field changes like state, control and Controller concepts are not really clear yet...*
+- *React-simple-Rating was not so simple to handle with react hook form*
+- *As add and Edit are the quite similar functionality same form for both Add and Edit operations based on conditions and mode*
+- *Tried to apply add to favorite button toggler which one through me into an infinity loop*
+- *Search functionality was awesome thanks to Shariyar Vai for better explanation, few things are clear but still now need to learn more about MongoDB and Node.js*
+- *Thanks to Dave Gray, procademy, piyushGarg, codeWithRobby for a global error handler, cause it was really great and effective way to handle error rather then watching red texts on terminals.Know this was not an standard way to handle it I just tried to apply just a portion of their huge project, still learning and getting confused but improving myself*
+- *Tried to apply framer motion animation here though I'am in learning process but I found it quite easier then GSAP animation*
+- *Tried to explain my whole project into mermaid charts I found it really great to explain and to debug codes* 
 
+***
 [_Feel Free to Visit **ReelEra**_](https://reeleraassignment10.netlify.app/)
-[_Server Site_](https://assignment-10-server-kohl-seven.vercel.app/)
 
 <br/>
 <br/>
@@ -156,6 +169,12 @@ MongoDB ::: function
 <br/>
 <br/>
 
-<img align="center" src="./src/assets/iconLogo.svg" alt="" />
 
-### Thank You
+<img align="center" src="./src/assets/popCorn.svg" alt="" />
+
+### *Thanks for Visiting*
+### <a>*ReelEra*</a>
+
+***Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?***
+
+<a> ― *Brian Kernighan*</a> 
