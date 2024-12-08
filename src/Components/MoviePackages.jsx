@@ -22,6 +22,19 @@ const subscriptionPlans = [
   },
 ];
 
+const btnVariant={
+  hover:{
+    scale:1.2,
+    transition:{
+      duration:0.3,
+      type:"spring",
+      damping:0.5,
+      repeat:Infinity,
+      repeatType:"mirror"
+    }
+  }
+}
+
 function MoviePackages() {
   return (
     <>
@@ -56,9 +69,12 @@ function MoviePackages() {
               </li>
             ))}
           </ul>
-          <button className="inActive hover:bg-defaultColor hover:text-white transition-all duration-300 my-10">
+          <motion.button
+          variants={btnVariant}
+          whileHover="hover"
+           className="inActive hover:bg-defaultColor hover:text-white transition-all duration-300 my-10">
             Choose {plan.name}
-          </button>
+          </motion.button>
         </motion.section>
       ))}
     </section>

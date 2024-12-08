@@ -4,6 +4,7 @@ import { useCURD } from "../../AllProviders/CURDProvider"
 import Spinner from "../../Components/Spinner/Spinner";
 import MovieCard from "../../Components/MovieCard.jsx"
 import {motion} from "motion/react";
+import { Link } from "react-router-dom";
 
 function AllMovies(){
     const {allData, allMoviesFetcher, spinner} = useCURD();
@@ -62,7 +63,7 @@ function AllMovies(){
           type="search" 
           name="search" 
           id="search" 
-          placeholder="Search Movie Title"
+          placeholder="Search by Title"
           className="searchInput !pr-10"
           defaultValue={userQuery}
           onChange={(e)=>setUserQuery(e.target.value)}
@@ -79,6 +80,26 @@ function AllMovies(){
         </section>
       }
     </div>
+    {
+      allData?.length && !spinner ? " " : <motion.section
+      initial={{
+        y:"100vh",
+        opacity:0
+      }}
+      animate={{
+        y:0,
+        opacity:1,
+        transition:{
+          duration:0.5,
+          delay:0.5
+        }
+      }}
+       className="text-center h-[20vh]">
+        <h4 className="text-4xl text-center text-sky-400 font-schi">No match Found !</h4>
+        <p className="text-center italic text-defaultColor my-7">We encourage you to share this movie with Us</p>
+        <Link to="/production" className="active">Let's Add this Movie</Link>
+      </motion.section>
+    }
     </section>
   )
 }

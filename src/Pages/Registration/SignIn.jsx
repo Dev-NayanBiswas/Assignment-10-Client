@@ -25,7 +25,7 @@ function SignIn(){
       redirect(`${location.state? location.state : "/"}`);
       reset();
     })
-    .catch(error=>toastAlert("error",`${error.message}`))
+    .catch(error=>toastAlert("error","Invalid Email or Password please try Again"))
   }
 
   return(

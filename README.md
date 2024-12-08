@@ -30,13 +30,50 @@
 ##### *Web Dev Zone*
 This simple single page website was created with-
 - TailwindCss
+  - custom Classes.
+  - Applied utility class.
+  - InlineCss.
+  
 - Framer Motion
+  - Basic Enter Animation.
+  - Gestures.
+  - Variants.
+  - useScroll Hook.
+  - useTransform Hook.
+  - useSpring Hook.
+  - WhileInView
+  
 - Javascript
+   - Basic JS like ternary, Double Not, OR operator, Array Methods,Async Functions,Regular Functions, Immediately Invoked Function Expression, Optional Chaining, TryCatch blocks, fetching method and more...
 - React Vite
+    - useState with conditional values
+    - useEffect, with no dependencies, multiple Dependencies..
+    - Custom Hook,
+    - Context API..
 - React Router Dom
+  - Optional Routing,
+  - Dynamic Routing,
+  - Index routing,
+  - useRouterError,
+  - Navigate Component,
+  - Outlet,  
+  - useParams,
+  - useLoaderData,
+  - useNavigate,
+  - useLocation,
+  - Link
+  - NavLink
 - Express js
-- Node js
-- MongoDB 
+  - POST
+  - GET
+  - PUT
+  - DELETE methods
+- Node js & MongoDB.
+  - insertOne()
+  - find()
+  - findOne()
+  - DeleteOne()
+  - updateOne() 
 
 
 <p>

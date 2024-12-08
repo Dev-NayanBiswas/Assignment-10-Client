@@ -161,59 +161,5 @@
     "duration": 102,
     "rating": 5,
     "summary": "A love story during World War II. Stars Humphrey Bogart and Ingrid Bergman."
-  },
-  {
-    "thumbnail": "https://example.com/jurassic_park.jpg",
-    "title": "Jurassic Park",
-    "genre": "Adventure, Sci-Fi",
-    "release": "1993",
-    "duration": "127",
-    "rating": 5,
-    "summary": "Dinosaurs come alive in a theme park. Stars Sam Neill, Laura Dern, and Jeff Goldblum."
-  },
-  {
-    "thumbnail": "https://example.com/titanic.jpg",
-    "title": "Titanic",
-    "genre": "Drama, Romance",
-    "release": "1997",
-    "duration": "195",
-    "rating": 5,
-    "summary": "A love story aboard the doomed Titanic. Stars Leonardo DiCaprio and Kate Winslet."
-  },
-  {
-    "thumbnail": "https://example.com/avatar.jpg",
-    "title": "Avatar",
-    "genre": "Sci-Fi, Adventure",
-    "release": "2009",
-    "duration": "162",
-    "rating": 4,
-    "summary": "Humans and Na'vi clash on Pandora. Stars Sam Worthington and Zoe Saldana."
-  },
-  {
-    "thumbnail": "https://example.com/avengers_endgame.jpg",
-    "title": "Avengers: Endgame",
-    "genre": "Action, Sci-Fi",
-    "release": "2019",
-    "duration": "181",
-    "rating": 4,
-    "summary": "Avengers battle Thanos to restore balance. Stars Robert Downey Jr. and Chris Evans."
-  },
-  {
-    "thumbnail": "https://example.com/incredibles.jpg",
-    "title": "The Incredibles",
-    "genre": "Animation, Action",
-    "release": "2004",
-    "duration": "115",
-    "rating": 4,
-    "summary": "A family of superheroes balances life and duty. Stars Craig T. Nelson and Holly Hunter."
-  },
-  {
-    "thumbnail": "https://example.com/lion_king.jpg",
-    "title": "The Lion King",
-    "genre": "Animation, Drama",
-    "release": "1994",
-    "duration": "88",
-    "rating": 5,
-    "summary": "A lion cub becomes a king. Stars Matthew Broderick and James Earl Jones."
   }
 ]

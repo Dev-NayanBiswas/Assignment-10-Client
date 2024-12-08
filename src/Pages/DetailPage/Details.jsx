@@ -25,7 +25,16 @@ function Details() {
   const { _id, title, thumbnail, summary, release, rating, genre, duration} = cardData || {};
   const email = userData?.email;
 
-
+  const btnVariant={
+    hover:{
+      scale:1.05,
+      transition:{
+        duration:0.3,
+        repeat:Infinity,
+        repeatType:"mirror"
+      }
+    }
+  }
   
   
   useEffect(() => {
@@ -143,21 +152,34 @@ function Details() {
               </p>
               <div className='flex items-center space-x-1 mb-5'>
                 <span className="text-lg font-semibold mr-3">Ratings</span> <Rating value={rating} />
+                <span className="font-semibold">{" "}{rating}/5</span>
               </div>
               <section className="text-left flex gap-4">
               
-            <button onClick={()=>{
+            <motion.button
+            variants={btnVariant}
+            whileHover="hover"
+             onClick={()=>{
               setIsFavorite(true)
               handleMovies();
             }} className={`text-3xl text-gray-500 p-2 rounded-full border-[1px] border-defaultColor/45 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
               {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
-            </button>
-            <Link to={`/production/${_id}`} className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 ">
+            </motion.button>
+            <motion.button
+            variants={btnVariant}
+            whileHover="hover"
+            className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 "
+            >
+              <Link to={`/production/${_id}`} >
               <RiEdit2Line className="text-sky-500" size={30} />
             </Link>
-            <button onClick={()=>handleDelete(_id)} className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 ">
+              </motion.button>
+            <motion.button
+            variants={btnVariant}
+            whileHover="hover"
+             onClick={()=>handleDelete(_id)} className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 ">
               <MdDeleteForever fill="#f3311685" size={30} />
-            </button>
+            </motion.button>
           </section>
             </motion.section>
           </section>
@@ -165,9 +187,14 @@ function Details() {
 
 
           <section className="text-center my-3">
+            <motion.button
+            variants={btnVariant}
+            whileHover="hover"
+            >
             <Link to='/allMovies' className='inActive !py-2'>
               See All Movies <GiFilmSpool size={35} className="inline-block ml-4 relative -right-3 -scale-100 -rotate-90" />
             </Link>
+            </motion.button>
           </section>
         </section>
       ) : (

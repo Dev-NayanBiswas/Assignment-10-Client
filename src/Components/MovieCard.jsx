@@ -11,14 +11,14 @@ function ProductCard({itemData, idx}){
         <motion.figure
         initial={{
           y:100,
-          opacity:0
+          opacity:0.5,
         }}
         whileInView={{
           y:0,
           opacity:1,
           transition:{
             duration:0.5,
-            delay:idx/10,
+            delay:idx/20,
                 type:"tween",
                 ease:"easeInOut"
           }

@@ -4,6 +4,20 @@ import {motion} from "motion/react";
 
 function FavCard({cardData, onDelete, index}){
     const {_id, title, thumbnail, summary, release, rating, genre, duration, isFavorite } = cardData || {};
+
+
+    const btnVariant={
+      hover:{
+        scale:1.2,
+        transition:{
+          duration:0.3,
+          type:"spring",
+          damping:0.5,
+          repeat:Infinity,
+          repeatType:""
+        }
+      }
+    }
   return (
     <>
         
@@ -23,8 +37,16 @@ function FavCard({cardData, onDelete, index}){
               }
             }}
              className="w-full h-[40vh] flex rounded-lg" >
-                <section className="flex-1 w-1/2 h-[40vh] rounded-s-lg">
-                    <img src={thumbnail} alt="" className="h-full w-full object-top object-cover rounded-s-lg" />
+                <section className="flex-1 w-1/2 h-[40vh] rounded-s-lg overflow-hidden">
+                    <motion.img
+                    whileHover={{
+                      scale:1.1,
+                      transition:{
+                        duration:1,
+                        type:"spring",
+                      }
+                    }}
+                     src={thumbnail} alt="" className="h-full w-full object-top object-cover rounded-s-lg" />
                 </section>
                 <section className="flex-1 w-1/2 h-[40vh] rounded-e-lg flex flex-col justify-evenly">
                 <section className="ml-4">
@@ -34,9 +56,12 @@ function FavCard({cardData, onDelete, index}){
                 <section className="text-left mx-3 space-y-3">
                 <p className="font-semibold">Runtime {duration} minutes</p>
                 <p className="font-semibold">Released on {release}</p>
-                <p className="flex gap-1 items-center">IMDB <Rating value={rating}/></p>
+                <p className="flex gap-1 items-center font-semibold">IMDB <Rating value={rating}/> <span>{rating}/5</span> </p>
                 </section>
-                <button onClick={()=>onDelete(_id)} className="inActive self-start ml-4 flex items-center gap-3">Delete <MdDeleteForever/></button>
+                <motion.button
+                variants={btnVariant}
+                whileHover="hover"
+                 onClick={()=>onDelete(_id)} className="inActive self-start ml-4 flex items-center gap-3">Delete <MdDeleteForever/></motion.button>
                 </section>
             </motion.section>
 
