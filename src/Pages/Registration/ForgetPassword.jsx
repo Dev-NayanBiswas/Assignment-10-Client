@@ -8,7 +8,6 @@ import toastAlert from "../../Utilities/Scripts/toastAlert";
 function ForgetPassword(){
     const {resetPasswordEmail} = useAuth();
     const {email} = useParams();
-    console.log(email)
   const {register, handleSubmit, formState:{errors}, reset} = useForm({defaultValues:{email:email || " "}});
 
 
