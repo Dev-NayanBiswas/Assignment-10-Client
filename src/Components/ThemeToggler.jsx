@@ -13,6 +13,9 @@ function ThemeToggler() {
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
+
+        document.querySelector(".navContainer").style.background = `${theme === "dark" ? "#1d232a" : "#f8fdef"}` 
+        
     }, [theme]);
 
     return (

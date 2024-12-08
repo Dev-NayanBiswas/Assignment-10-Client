@@ -47,7 +47,7 @@ function ProductCard({itemData, idx}){
                 Released on <span className="text-sky-400">{release}</span>
               </p>
               <div className='flex items-center space-x-1 mb-5'>
-                <span className="text-lg font-semibold mr-3">Rating</span> <Rating value={rating}/>
+                <span className="text-lg font-semibold mr-3">Rating</span> <Rating value={rating}/>{""} <span className="ml-3 italic tracking-wider text-lg font-bold">{rating} / 5</span>
               </div>
               
             </figcaption>

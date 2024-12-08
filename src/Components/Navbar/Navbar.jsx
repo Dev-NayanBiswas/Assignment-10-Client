@@ -105,7 +105,7 @@ function Navbar(){
                         : "opacity-0 scale-95 pointer-events-none"
                 }`}
             >
-                <ul className="py-2 space-y-4">
+                <ul className="py-2 space-y-4 z-50 bg-base-100 px-2 rounded-lg">
                     <li>
                         <h5 onClick={()=>setShowDropdown(false)} className="block w-full px-4 py-2 text-left text-defaultColor hover:bg-gray-100 text-xl font-semibold">
                             {userData.displayName}

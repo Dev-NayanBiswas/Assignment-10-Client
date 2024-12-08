@@ -39,7 +39,6 @@ function MoviePackages() {
         <motion.section
         whileHover={{
           scale:1.1,
-          background:"#f8fff2",
           transition:{
             duration:0.5,
           }
@@ -48,11 +47,11 @@ function MoviePackages() {
           className="w-80 p-6 rounded-xl shadow-lg flex flex-col items-center text-center cursor-pointer"
         >
           <section className="mb-4">{plan.icon}</section>
-          <h3 className="text-2xl font-semibold mb-2">{plan.name}</h3>
-          <p className="text-3xl font-bold mb-4 text-green-600">{plan.price} <span className="text-gray-500">/ month</span></p>
+          <h3 className={`text-4xl font-semibold mb-2 ${plan.name=== "Premium"? "text-[#FFD700]":"text-[#808080]"}`}>{plan.name}</h3>
+          <p className="text-3xl font-bold mb-4 text-green-600">{plan.price} <span className="text-gray-500 text-xl mx-1">/</span><span className="text-lg capitalize ">month</span></p>
           <ul className="mb-4 space-y-2">
             {plan.features.map((feature, idx) => (
-              <li key={idx} className="text-lg text-left">
+              <li key={idx} className="text-lg text-left font-[600]">
                 {feature}
               </li>
             ))}

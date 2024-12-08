@@ -1,6 +1,7 @@
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaRegHandshake } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt} from "react-icons/fa";
 import HelpSVG from "../Components/SVGComponents/HelpSVG";
 import {motion} from "motion/react";
+import { RxCounterClockwiseClock } from "react-icons/rx";
 
 
 function HelpSection() {
@@ -32,19 +33,19 @@ function HelpSection() {
 
                 <section className="space-y-4 md:ml-5 ml-0">
                     <section className="flex items-center">
-                        <FaPhoneAlt className="text-blue-500 mr-2" />
+                        <FaPhoneAlt size={20} className="text-defaultColor mr-2" />
                         <span className="text-lg">+123-456-7890</span>
                     </section>
                     <section className="flex items-center">
-                        <FaEnvelope className="text-red-500 mr-2" />
+                        <FaEnvelope size={20} className="text-defaultColor mr-2" />
                         <span className="text-lg">support@reelera.com</span>
                     </section>
                     <section className="flex items-center">
-                        <FaMapMarkerAlt className="text-green-500 mr-2" />
+                        <FaMapMarkerAlt size={20} className="text-defaultColor mr-2" />
                         <span className="text-lg">007, James Bond Street, Ohio</span>
                     </section>
                     <section className="flex items-center">
-                        <FaRegHandshake className="text-purple-500 mr-2" />
+                        <RxCounterClockwiseClock size={25} className="text-defaultColor mr-2" />
                         <span className="text-lg">Meeting Time: 10 AM - 8 PM</span>
                     </section>
                 </section>

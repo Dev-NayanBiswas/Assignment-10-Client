@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ImSearch } from "react-icons/im";
 import { useCURD } from "../../AllProviders/CURDProvider"
 import Spinner from "../../Components/Spinner/Spinner";
 import MovieCard from "../../Components/MovieCard.jsx"
@@ -43,29 +44,31 @@ function AllMovies(){
         </section>
         <p className="lg:w-9/12 w-full px-3 text-center mx-auto">Movies Hub is a community-driven platform where movie enthusiasts can explore, share, and contribute their favorite films. It serves as an open-source haven for film lovers, offering a diverse collection of movies curated by people from all walks of life. Whether you're searching for hidden gems or sharing your own recommendations</p>
       </section>
-        <section className="flex items-start justify-center relative lg:-top-9 ">
-          <motion.input
-          initial={{
-            x:"100vw",
-            opacity:0
-          }}
-          animate={{
-            x:0, opacity:1, transition:{
-              delay:1,
-              duration:1,
-              type:"spring",
-              damping:15
-            }
-          }} 
+        <motion.section
+        initial={{
+          x:"100vw",
+          opacity:0
+        }}
+        animate={{
+          x:0, opacity:1, transition:{
+            delay:1,
+            duration:1,
+            type:"spring",
+            damping:15
+          }
+        }} 
+         className="flex items-start justify-center relative lg:-top-9">
+          <input
           type="search" 
           name="search" 
           id="search" 
           placeholder="Search Movie Title"
-          className="searchInput"
+          className="searchInput !pr-10"
           defaultValue={userQuery}
           onChange={(e)=>setUserQuery(e.target.value)}
           />
-        </section>
+          <span className="absolute right-4 top-1/3 text-xl text-defaultColor"><ImSearch /></span>
+        </motion.section>
       </section>
       <div className="my-10">
       {

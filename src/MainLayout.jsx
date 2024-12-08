@@ -10,7 +10,7 @@ function MainLayout(){
 
   return (
     <>
-        <section className="w-11/12 mx-auto overflow-x-hidden overflow-y-hidden">
+        <section className="w-11/12 mx-auto overflow-x-hidden overflow-y-hidden relative">
         <motion.div
         style={{
           scaleX:springEffect,
@@ -18,10 +18,11 @@ function MainLayout(){
         }}
         className="w-full top-0 h-2 rounded-b-full fixed origin-right z-50 right-0"
         />
-            <section>
+            <section className="fixed w-11/12 navContainer top-0 z-40">
                 <Navbar/>
             </section>
-            <section className="min-h-[80vh]">
+            <div className="h-[96px] w-full"/>
+            <section className="min-h-[80vh] mx-auto">
               <Outlet/>
             </section>
             <motion.section

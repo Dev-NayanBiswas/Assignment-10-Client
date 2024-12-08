@@ -1,8 +1,7 @@
 import FAQsvg from "../../Components/SVGComponents/FAQsvg";
-import {motion, useScroll} from "motion/react";
+import {motion} from "motion/react";
 
 function FAQ(){
-  const {scrollYProgress} = useScroll()
     const faq = [
         {
           question: "What services does the movie portal offer ?",
@@ -92,11 +91,27 @@ function FAQ(){
        className=" flex flex-col gap-5">
         {
             faq.map(({question, answer}, index)=>
-                <section key={index} className='collapse collapse-plus shadow-lg'>
+                <section
+                 key={index} className='collapse collapse-plus shadow-lg'>
           <input type='radio' name='my-accordion-3' defaultChecked />
-          <section className='collapse-title md:text-2xl text-lg font-medium italic'>
+          <motion.section
+          initial={{
+            opacity:0.2,
+            x:'50vw'
+          }}
+          animate={{
+            opacity:1,
+            x:0,
+            transition:{
+              duration:0.7,
+              delay:index/5,
+              type:"tween",
+              ease:"easeInOut"
+            }
+          }}
+           className='collapse-title md:text-2xl text-lg font-medium italic'>
             {question}
-          </section>
+          </motion.section>
           <section className='collapse-content'>
             <p>{answer}</p>
           </section>
