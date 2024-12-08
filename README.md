@@ -27,14 +27,14 @@
 
 <img align="center" src="./src/assets/iconLogo.svg" alt="" />
 
-##### *Web Dev Zone*
-This simple single page website was created with-
-- TailwindCss
+#### *Web Dev Zone*
+***This simple single page website was created with-***
+- ***TailwindCss***
   - custom Classes.
   - Applied utility class.
   - InlineCss.
   
-- Framer Motion
+- ***Framer Motion***
   - Basic Enter Animation.
   - Gestures.
   - Variants.
@@ -43,14 +43,14 @@ This simple single page website was created with-
   - useSpring Hook.
   - WhileInView
   
-- Javascript
+- ***Javascript***
    - Basic JS like ternary, Double Not, OR operator, Array Methods,Async Functions,Regular Functions, Immediately Invoked Function Expression, Optional Chaining, TryCatch blocks, fetching method and more...
-- React Vite
+- ***React with Vite***
     - useState with conditional values
     - useEffect, with no dependencies, multiple Dependencies..
     - Custom Hook,
     - Context API..
-- React Router Dom
+- ***React Router Dom***
   - Optional Routing,
   - Dynamic Routing,
   - Index routing,
@@ -63,12 +63,18 @@ This simple single page website was created with-
   - useLocation,
   - Link
   - NavLink
-- Express js
+- ***Firebase Authentications***
+  - Google SigIn
+  - Sign Up with Email and Password
+  - Update Profile
+  - Signin with Email & Password
+  - Password Reset
+- ***Express js***
   - POST
   - GET
   - PUT
   - DELETE methods
-- Node js & MongoDB.
+- ***Node js & MongoDB.***
   - insertOne()
   - find()
   - findOne()
