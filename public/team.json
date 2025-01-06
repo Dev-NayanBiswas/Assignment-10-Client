@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Anthony Johnson",
+      "image": "1.png",
+      "contribution": "Anthony, a top content writer on our website, excels in creating engaging, insightful, and high-quality articles that captivate readers worldwide",
+      "designation": "Lead Designer",
+      "logo": "<SiAdobeindesign/>"
+    },
+    {
+      "id": 2,
+      "name": "Jenny",
+      "image": "girl1.png",
+      "contribution": "Senior Developer focusing on backend architecture and API integrations.",
+      "designation": "Senior Developer",
+      "logo": "<FaPython />"
+    },
+    {
+      "id": 3,
+      "name": "Awlad",
+      "image": "7.png",
+      "contribution": "Marketing Specialist driving brand strategy and digital marketing campaigns.",
+      "designation": "UI/UX",
+      "logo": "<IoBarChart />"
+    },
+    {
+      "id": 4,
+      "name": "David Lee",
+      "image": "man1.png",
+      "contribution": "Project Manager overseeing project timelines, resources, and team coordination.",
+      "designation": "Manager",
+      "logo": "<FaBlackTie />"
+    },
+    {
+      "id": 5,
+      "name": "Nayan",
+      "image": "marketing.png",
+      "contribution": "Marketing Specialist driving brand strategy and digital marketing campaigns.",
+      "designation": "Web Dev",
+      "logo": "<IoBarChart />"
+    },
+    {
+      "id": 6,
+      "name": "David Lee",
+      "image": "manager.png",
+      "contribution": "Project Manager overseeing project timelines, resources, and team coordination.",
+      "designation": "HR",
+      "logo": "<FaBlackTie />"
+    }
+  ]
+  

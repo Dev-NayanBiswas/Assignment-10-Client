@@ -36,4 +36,7 @@
   .searchInput{
     @apply rounded-s-full rounded-e-full w-[300px] py-3 px-6 bg-transparent outline-none border-2 border-defaultColor focus:ring-0 text-lg placeholder:italic placeholder:text-defaultColor placeholder:font-semibold font-semibold text-defaultColor tracking-wide
   }
+  .textInput{
+    @apply w-full mx-auto bg-defaultColor/15 border-[2px] border-defaultColor p-2 pl-4 rounded-e-full rounded-s-full outline-defaultColor text-defaultColor focus:border-defaultColor font-semibold text-xl
+  }
 }

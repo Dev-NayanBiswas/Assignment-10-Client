@@ -24,9 +24,9 @@ function ProductCard({itemData, idx}){
           }
         }}
         viewport={{once:false,margin:'10px'}}
-         className='cursor-pointer border-gray-50/10 border-[1px]  shadow-xl rounded-bl-xl rounded-br-xl'>
+         className='cursor-pointer border-gray-50/10 border-[1px] flex flex-col justify-between  shadow-xl rounded-bl-xl rounded-br-xl'>
             
-            <figure className="h-[650px] lg:h-[800px] w-full lg:p-4 overflow-hidden">
+            <figure className="h-[650px] lg:h-[800px] w-full p-2 overflow-hidden">
             <motion.img
             whileHover={{
               scale:1.1,

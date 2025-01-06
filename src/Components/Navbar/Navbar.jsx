@@ -10,11 +10,15 @@ function Navbar(){
   const [showDropdown, setShowDropdown] = useState(false);
   const {userData,signOutUser} = useAuth()
   
-    const paths = [
-        {path:"/", name:"Home"},
+    const paths = userData?.email?[
+      {path:"/", name:"Home"},
         {path:"/production", name:"Add Movies"},
         {path:"/allMovies", name:"All Movies"},
         {path:"/myFavorites", name:"My Favorites"},
+        {path:"/FAQ", name:"FAQ"},
+    ] : [
+        {path:"/", name:"Home"},
+        {path:"/allMovies", name:"All Movies"},
         {path:"/registration", name:"Registration"},
         {path:"/FAQ", name:"FAQ"},
     ]

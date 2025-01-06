@@ -17,15 +17,18 @@ function HelpSection() {
         </section>
         <p className="text-sm text-center lg:w-5/12 w-full mx-auto my-4">Our online customer service ensures seamless, responsive, and personalized support, offering convenience, efficiency, reliability, and satisfaction at every interaction.</p>
       </article>
-            <section className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg">
-            <figure className="md:w-1/2 w-full">
+
+
+
+            <section className="flex flex-col lg:flex-row items-center p-6 rounded-lg">
+            <figure className="lg:w-1/2 md:w-8/12 w-full">
                 <HelpSVG/>
             </figure>
 
-            <section className="md:w-8/12 w-full h-full flex flex-col justify-between items-start">
+            <section className="lg:w-8/12 w-full h-full flex flex-col justify-between items-start">
                 <section>
                 
-                <p className=" mb-4 text-xl w-8/12 ">
+                <p className=" mb-4 text-xl lg:w-8/12 w-11/12">
                     We value our subscribers and are always ready to assist. Feel free to
                     reach out to us via phone, email, or visit us at our location.
                 </p>

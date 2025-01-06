@@ -7,6 +7,9 @@ import toastAlert from "../../Utilities/Scripts/toastAlert.js";
 import Spinner from "../../Components/Spinner/Spinner.jsx";
 import MovieCard from "../../Components/MovieCard.jsx"
 import dynamicTitle from "../../Utilities/Scripts/dynamicTitle.js";
+import TeamSection from "../../Components/TeamSection.jsx";
+import Announce from "../../Components/Announce.jsx";
+import ReachUs from "../../Components/ReachUs.jsx";
 
 function Home(){
   dynamicTitle("ReelEra || Home")
@@ -48,7 +51,7 @@ function Home(){
         <p className="text-sm text-center lg:w-5/12 w-full mx-auto my-4">Explore the top 6 featured movies on our website, chosen based on user ratings. These crowd favorites combine thrilling stories, breathtaking visuals, and stellar performances for a truly unforgettable cinematic experience!</p>
       </article>
       {
-        loading ? <Spinner/> : <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+        loading ? <Spinner/> : <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           
         {
           featMovies?.map((movie)=><MovieCard key={movie._id} itemData={movie}/>)
@@ -72,7 +75,18 @@ function Home(){
        className="my-40">
         <MoviePackages/>
       </motion.section>
+      {/* Announce */}
+      <section>
+        <Announce/>
+      </section>
+      {/* Team Section*/}
+      <section>
+        <TeamSection/>
+      </section>
+
+
       <motion.section
+      id="helps"
         initial={{
           opacity:0,
           y:200
@@ -88,7 +102,12 @@ function Home(){
         }}
        className="my-40">
         <HelpSection/>
+
       </motion.section>
+        {/* email Section*/}
+      <section>
+          <ReachUs/>
+      </section>
     </section>
     </>
   )

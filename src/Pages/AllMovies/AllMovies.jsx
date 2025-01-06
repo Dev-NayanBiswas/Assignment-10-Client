@@ -75,7 +75,7 @@ function AllMovies(){
       </section>
       <div className="my-10">
       {
-        spinner ? <Spinner/> : <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+        spinner ? <Spinner/> : <section className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {
             allData?.map((data, index)=><MovieCard idx={index} key={data._id} itemData={data}/>)
           }
