@@ -8,22 +8,70 @@ import { Link } from "react-router-dom";
 import dynamicTitle from "../../Utilities/Scripts/dynamicTitle.js";
 
 function AllMovies(){
-    const {allData, allMoviesFetcher, spinner} = useCURD();
+  const [ascendRating, setAscendRating] = useState("");
+    const {allData, allMoviesFetcher, spinner,setAllData} = useCURD();
+    const[movieData, setMovieData] = useState(allData);
     const [userQuery, setUserQuery] = useState(null);
     dynamicTitle("All Movies")
 
     useEffect(()=>{
       if(userQuery){
         allMoviesFetcher(userQuery)
-      }else{
-        allMoviesFetcher()
+        console.log(userQuery);
       }
+      allMoviesFetcher()
       
     },[userQuery])
 
+    
+    useEffect(()=>{
+      if(ascendRating.length){
+        if(ascendRating === "descen"){
+          const sortDesc = allData?.toSorted((a,b)=>b.rating-a.rating);
+          setAllData(sortDesc) 
+        }else if(ascendRating === "ascen"){
+          const sortDesc = allData?.toSorted((a,b)=>a.rating-b.rating);
+          setAllData(sortDesc)
+        }
+        if(ascendRating === "old"){
+          const sortDesc = allData?.toSorted((a,b)=>a.release-b.release);
+          setAllData(sortDesc)
+        }else if(ascendRating === "new"){
+          const sortDesc = allData?.toSorted((a,b)=>b.release-a.release);
+          setAllData(sortDesc)
+        }
+      }
+      
+    },[ascendRating])
+
+
   return (
     <section>
+      
+
+
+
+
+
+
+
       <section className="flex lg:flex-row flex-col justify-center items-center mb-5 gap-4 my-20">
+      <section className="selectDropdown relative -top-10">
+      <select
+        id="rating-filter"
+        value={ascendRating}
+        onChange={(e)=>setAscendRating(e.target.value)}
+        className="searchInput !pr-10"
+      >
+        <option value="" disabled>
+          Filter Movies
+        </option>
+        <option value="ascen">Low to High</option>
+        <option value="descen">High to Low</option>
+        <option value="new">New Released</option>
+        <option value="old">Old is Gold</option>
+      </select>
+      </section>
       <section className="flex-1">
       <section className="flex justify-center items-center mb-5 gap-4">
         <motion.div

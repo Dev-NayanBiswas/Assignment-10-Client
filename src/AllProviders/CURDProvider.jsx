@@ -1,4 +1,4 @@
-import { useContext, useState} from "react";
+import { useContext, useEffect, useState} from "react";
 import { CURDContext } from "../Utilities/Scripts/AllContexts"
 import toastAlert from "../Utilities/Scripts/toastAlert";
 
@@ -8,6 +8,23 @@ function CURDProvider({children}){
     const [allData, setAllData]=useState([])
     const [favMovies, setFavMovies]=useState([]);
     const [spinner, setSpinner] = useState(true);
+    
+
+            
+
+            // useEffect(()=>{
+            //     if(selectedRating){
+            //         console.log("Hello World")
+            //         const filterMovies = allData?.filter(item=>item.rating === selectedRating);
+            //         setAllData(filterMovies);
+            //         console.log(filterMovies)
+            //     }else{
+            //         console.log("Less then 3")
+            //         allMoviesFetcher()
+            //     }
+            // },[selectedRating])
+    
+ 
 
     //! Favorite Movies Fetcher Function 
     async function favMoviesFetcher(email){
@@ -160,13 +177,15 @@ function CURDProvider({children}){
     }
 
     const CURDoperations ={
+
+        setAllData,
+
         spinner,
         allMoviesFetcher,
         favMovies,
         favMoviesFetcher,
         allData,
         updateOne,
-        setAllData,
         addProduct,
         deleteProduct,
         addFavorite,
