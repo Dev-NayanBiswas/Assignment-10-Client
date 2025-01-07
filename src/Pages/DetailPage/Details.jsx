@@ -156,33 +156,35 @@ function Details() {
                 <span className="text-lg font-semibold mr-3">Ratings</span> <Rating value={rating} />
                 <span className="font-semibold">{" "}{rating}/5</span>
               </div>
-              <section className="text-left flex gap-4">
+              {
+                userData?.email ? <section className="text-left flex gap-4">
               
-            <motion.button
-            variants={btnVariant}
-            whileHover="hover"
-             onClick={()=>{
-              setIsFavorite(true)
-              handleMovies();
-            }} className={`text-3xl text-gray-500 p-2 rounded-full border-[1px] border-defaultColor/45 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
-              {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
-            </motion.button>
-            <motion.button
-            variants={btnVariant}
-            whileHover="hover"
-            className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 "
-            >
-              <Link to={`/production/${_id}`} >
-              <RiEdit2Line className="text-sky-500" size={30} />
-            </Link>
-              </motion.button>
-            <motion.button
-            variants={btnVariant}
-            whileHover="hover"
-             onClick={()=>handleDelete(_id)} className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 ">
-              <MdDeleteForever fill="#f3311685" size={30} />
-            </motion.button>
-          </section>
+                <motion.button
+                variants={btnVariant}
+                whileHover="hover"
+                 onClick={()=>{
+                  setIsFavorite(true)
+                  handleMovies();
+                }} className={`text-3xl text-gray-500 p-2 rounded-full border-[1px] border-defaultColor/45 ${ isFavorite ? "pointer-events-none" : "cursor-pointer"}`}>
+                  {isFavorite ? <GoHeartFill fill="red" size={30}/> :<GoHeart size={30} />}
+                </motion.button>
+                <motion.button
+                variants={btnVariant}
+                whileHover="hover"
+                className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 "
+                >
+                  <Link to={`/production/${_id}`} >
+                  <RiEdit2Line className="text-sky-500" size={30} />
+                </Link>
+                  </motion.button>
+                <motion.button
+                variants={btnVariant}
+                whileHover="hover"
+                 onClick={()=>handleDelete(_id)} className="text-3xl p-2 rounded-full border-[1px] border-defaultColor/45 ">
+                  <MdDeleteForever fill="#f3311685" size={30} />
+                </motion.button>
+              </section> : ""
+              }
             </motion.section>
           </section>
           </section>

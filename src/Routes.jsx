@@ -49,9 +49,8 @@ const Routes = createBrowserRouter([
             {
                 path:"details/:ID?",
                 loader:({params})=>fetch(`https://assignment-10-server-kohl-seven.vercel.app/movies/${params.ID || "b51715dbd2ff48f4a4c64025"}`),
-                element:<PrivateRoute>
-                    <Details/>
-                </PrivateRoute>
+                element:<Details/>
+               
             },
             {
                 path:"registration",
